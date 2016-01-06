@@ -28,6 +28,7 @@ public class NewAccount extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         userNameInput  = (EditText) findViewById(R.id.userNameTextInput);
+        userNameInput.requestFocus();
         passwordInput  = (EditText) findViewById(R.id.passwordTextInput);
         emailInput     = (EditText) findViewById(R.id.emailTextInput);
 
@@ -55,13 +56,15 @@ public class NewAccount extends AppCompatActivity {
 
         if(TextUtils.isEmpty(password)){
             passwordInput.setError(getString(R.string.error_field_required));
-            focusView = passwordInput;
+            if(focusView == null)
+                focusView = passwordInput;
             cancel = true;
         }
 
         if(TextUtils.isEmpty(email)){
             emailInput.setError(getString(R.string.error_field_required));
-            focusView = emailInput;
+            if(focusView == null)
+                focusView = emailInput;
             cancel = true;
         }
 

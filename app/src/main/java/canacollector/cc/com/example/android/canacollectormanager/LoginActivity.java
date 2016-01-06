@@ -21,8 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
-import com.parse.ParseUser;
 import com.parse.ParseException;
+import com.parse.ParseUser;
 
 /**
  * A login screen that offers login via email/password.
@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView.requestFocus();
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -117,6 +118,13 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
+            cancel = true;
+        }
+
+        if(TextUtils.isEmpty(password)){
+            mPasswordView.setError(getString(R.string.error_field_required));
+            if(focusView == null)
+                focusView = mPasswordView;
             cancel = true;
         }
 
