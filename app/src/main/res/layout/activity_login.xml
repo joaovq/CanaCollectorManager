@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
     tools:context="canacollector.cc.com.example.android.canacollectormanager.LoginActivity">
 
     <!-- Login progress -->
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -52,6 +54,7 @@
         style="?android:textAppearanceSmall"
         android:text="@string/action_create_account"
         android:textStyle="bold"
+        android:textColor="@color/colorButtonText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -65,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/action_sign_in"
+        android:textColor="@color/colorButtonText"
         android:textStyle="bold"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
@@ -75,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_password"
+        android:textColorHint="@color/colorLabel"
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
@@ -84,19 +89,22 @@
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/email_sign_in_button"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffff" />
 
     <AutoCompleteTextView
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_email"
+        android:textColorHint="@color/colorLabel"
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:singleLine="true"
         android:layout_above="@+id/password"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,5 +115,7 @@
         android:textSize="25dp"
         android:layout_above="@+id/email"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textColor="@color/colorLabel"
+        />
 </RelativeLayout>

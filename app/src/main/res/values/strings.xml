@@ -6,11 +6,11 @@
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_create_account">Criar conta</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">Esse email é inválido</string>
+    <string name="error_invalid_password">Essa senha é muita curta</string>
+    <string name="error_incorrect_password">Essa senha é incorreta</string>
+    <string name="error_field_required">Campo obrigatório</string>
+    <string name="title_activity_main">Menu Principal</string>
     <string name="title_activity_new_account">Criar Nova Conta</string>
 </resources>
