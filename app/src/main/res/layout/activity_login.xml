@@ -84,8 +84,7 @@
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/email_sign_in_button"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="bar@example.com:world" />
+        android:layout_alignParentEnd="true" />
 
     <AutoCompleteTextView
         android:id="@+id/email"
@@ -97,8 +96,7 @@
         android:singleLine="true"
         android:layout_above="@+id/password"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="foo@example.com:hello" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
