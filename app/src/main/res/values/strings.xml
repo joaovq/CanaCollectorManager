@@ -13,4 +13,6 @@
     <string name="error_field_required">Campo obrigatório</string>
     <string name="title_activity_main">Menu Principal</string>
     <string name="title_activity_new_account">Criar Nova Conta</string>
+    <string name="message_leaving_app">Finalizando! Aguarde...</string>
+    <string name="message_atempting_login">Logando! Aguarde...</string>
 </resources>

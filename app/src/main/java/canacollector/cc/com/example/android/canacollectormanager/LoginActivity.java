@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private ProgressDialog showProgress() {
         final ProgressDialog pDialog = new ProgressDialog(LoginActivity.this);
-        pDialog.setMessage("Attempting login...");
+        pDialog.setMessage(getString(R.string.message_atempting_login));
         pDialog.setIndeterminate(false);
         pDialog.setCancelable(true);
         pDialog.show();
@@ -170,6 +170,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loginSucessful() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }
 
