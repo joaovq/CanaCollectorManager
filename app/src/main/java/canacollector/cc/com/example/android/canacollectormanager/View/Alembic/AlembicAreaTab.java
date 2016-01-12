@@ -2,6 +2,7 @@ package canacollector.cc.com.example.android.canacollectormanager.View.Alembic;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,17 @@ public class AlembicAreaTab extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.content_alembic_area_tab, container, false);
 
-        getActivity().setTitle("Área");
-
         return rootView;
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        // Make sure that we are currently visible
+        if (this.isVisible()) {
+            Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+            toolbar.setTitle("Área");
+        }
+    }
+
 }

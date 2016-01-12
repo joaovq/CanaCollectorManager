@@ -59,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Alembic.AlembicActivity"
-            android:label="Produção"
+            android:label="Alambique"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Management.NewUserActivity"
