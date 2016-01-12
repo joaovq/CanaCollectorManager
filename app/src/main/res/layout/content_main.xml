@@ -10,14 +10,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="canacollector.cc.com.example.android.canacollectormanager.MainActivity"
+    tools:context=".View.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizar Dados"
-        android:id="@+id/visualizeDataButton"
+        android:text="@string/button_text_management"
+        android:id="@+id/managemetButton"
         android:textColor="#ffffffff"
         android:background="#d8a27640"
         android:layout_marginTop="134dp"
@@ -30,14 +30,40 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gerar Relatórios"
+        android:text="@string/button_text_production"
         android:textColor="#ffffffff"
         android:background="#d8a27640"
-        android:id="@+id/createReportsButton"
-        android:layout_below="@+id/visualizeDataButton"
+        android:id="@+id/productionButton"
+        android:layout_below="@+id/managemetButton"
         android:layout_marginTop="57dp"
-        android:layout_alignRight="@+id/visualizeDataButton"
-        android:layout_alignEnd="@+id/visualizeDataButton"
+        android:layout_alignRight="@+id/managemetButton"
+        android:layout_alignEnd="@+id/managemetButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_financial"
+        android:id="@+id/financialButton"
+        android:layout_marginTop="49dp"
+        android:textColor="#ffffffff"
+        android:background="#d8a27640"
+        android:layout_below="@+id/productionButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/title_main_activity"
+        android:id="@+id/mainTitle"
+        android:layout_marginTop="51dp"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager;
+package canacollector.cc.com.example.android.canacollectormanager.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,9 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-public class NewAccount extends AppCompatActivity {
+import canacollector.cc.com.example.android.canacollectormanager.R;
+
+public class NewAccountActivity extends AppCompatActivity {
 
     //UI Elements
     private EditText userNameInput;
@@ -79,7 +81,7 @@ public class NewAccount extends AppCompatActivity {
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
                     if (e == null) {
-                        Intent intent = new Intent(NewAccount.this,LoginActivity.class);
+                        Intent intent = new Intent(NewAccountActivity.this,LoginActivity.class);
                         startActivity(intent);
                     } else {
                         System.out.println(e.toString());

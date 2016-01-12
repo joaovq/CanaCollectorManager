@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager;
+package canacollector.cc.com.example.android.canacollectormanager.Utils;
 
 import android.app.Application;
 

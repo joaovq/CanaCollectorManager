@@ -1,16 +1,21 @@
-package canacollector.cc.com.example.android.canacollectormanager;
+package canacollector.cc.com.example.android.canacollectormanager.View;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
+
+import canacollector.cc.com.example.android.canacollectormanager.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,13 +27,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Button managementButton = (Button) findViewById(R.id.managemetButton);
+        managementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ManagementActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button productionButton = (Button) findViewById(R.id.productionButton);
+        productionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,AlembicActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
         backButtonCount++;
         if(backButtonCount == 1){
-            Toast.makeText(this.getApplicationContext(), "Aperta mais uma vez para sair!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getApplicationContext(), getString(R.string.message_type_again), Toast.LENGTH_SHORT).show();
         }
 
         else if(backButtonCount > 1){

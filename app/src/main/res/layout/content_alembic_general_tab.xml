@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#b7393838"><![CDATA[
+        android:background="@android:color/holo_orange_dark" >
+        ]]>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Geral"
+        android:id="@+id/generalTitleTab"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Área Cultivada:"
+        android:id="@+id/acreageTextView"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/generalTitleTab"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rendimento Médio Ind:"
+        android:id="@+id/industrialAverageIncomeTextView"
+        android:layout_below="@+id/acreageTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="94dp"
+        android:textColor="#ffffff"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Produção Diária:"
+        android:id="@+id/dailyProductionTextView"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/industrialAverageIncomeTextInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Estoque:"
+        android:id="@+id/inventoryTextView"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_above="@+id/inventoryTextInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espaço para texto"
+        android:id="@+id/acreageTextInput"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/acreageTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espaço para respota"
+        android:id="@+id/industrialAverageIncomeTextInput"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_below="@+id/industrialAverageIncomeTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espaço para respota"
+        android:id="@+id/dailyProductionTextInput"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/dailyProductionTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espaço para resposta"
+        android:id="@+id/inventoryTextInput"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

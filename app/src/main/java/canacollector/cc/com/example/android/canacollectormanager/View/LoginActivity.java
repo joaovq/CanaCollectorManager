@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager;
+package canacollector.cc.com.example.android.canacollectormanager.View;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+
+import canacollector.cc.com.example.android.canacollectormanager.R;
 
 /**
  * A login screen that offers login via email/password.
@@ -68,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         newAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,NewAccount.class);
+                Intent intent = new Intent(LoginActivity.this,NewAccountActivity.class);
                 startActivity(intent);
             }
         });

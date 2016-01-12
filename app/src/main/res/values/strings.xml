@@ -11,8 +11,16 @@
     <string name="error_invalid_password">Essa senha é muita curta</string>
     <string name="error_incorrect_password">Essa senha é incorreta</string>
     <string name="error_field_required">Campo obrigatório</string>
-    <string name="title_activity_main">Menu Principal</string>
+    <string name="title_topbar">Menu Principal</string>
+    <string name="title_main_activity">Taverna de Minas</string>
     <string name="title_activity_new_account">Criar Nova Conta</string>
     <string name="message_leaving_app">Finalizando! Aguarde...</string>
     <string name="message_atempting_login">Logando! Aguarde...</string>
+    <string name="message_type_again">Aperte mais uma vez para sair</string>
+    <string name="button_text_management">Gestão</string>
+    <string name="button_text_production">Alambique</string>
+    <string name="button_text_financial">Financeiro</string>
+    <string name="title_activity_management">ManagementActivity</string>
+    <string name="title_activity_production">ProductionActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>
