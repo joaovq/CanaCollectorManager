@@ -21,6 +21,7 @@ public class NewAccountActivity extends AppCompatActivity {
     private EditText userNameInput;
     private EditText passwordInput;
     private EditText emailInput;
+    //teste
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
