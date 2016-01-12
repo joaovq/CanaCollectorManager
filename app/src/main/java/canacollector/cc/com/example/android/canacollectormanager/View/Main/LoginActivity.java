@@ -31,8 +31,8 @@ import canacollector.cc.com.example.android.canacollectormanager.R;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String USER = "Taverna Real";
-    private static final String PASSWORD = "tavernademinas";
+    private static final String USER = "Taverna";
+    private static final String PASSWORD = "taverna";
     private static final String TAG_ERROR = "Failed to Login";
 
     // UI references.
@@ -47,16 +47,16 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mEmailView.requestFocus();
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+//        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+//                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+//                    //attemptLogin();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
