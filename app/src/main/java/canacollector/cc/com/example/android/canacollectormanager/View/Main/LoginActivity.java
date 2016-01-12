@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View;
+package canacollector.cc.com.example.android.canacollectormanager.View.Main;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;

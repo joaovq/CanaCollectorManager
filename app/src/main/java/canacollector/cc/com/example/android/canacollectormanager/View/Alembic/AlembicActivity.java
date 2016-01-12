@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View;
+package canacollector.cc.com.example.android.canacollectormanager.View.Alembic;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,7 +20,8 @@ public class AlembicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_production);
+        setContentView(R.layout.activity_alembic);
+        getActionBar().setTitle("Alambique");
 
         List<Fragment> fragments = getFragments();
 

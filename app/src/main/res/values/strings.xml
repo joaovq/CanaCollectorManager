@@ -22,5 +22,5 @@
     <string name="button_text_financial">Financeiro</string>
     <string name="title_activity_management">ManagementActivity</string>
     <string name="title_activity_production">ProductionActivity</string>
-    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_new_user">Adicionar Funcionário</string>
 </resources>

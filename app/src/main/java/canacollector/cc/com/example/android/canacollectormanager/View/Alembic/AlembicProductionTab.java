@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View;
+package canacollector.cc.com.example.android.canacollectormanager.View.Alembic;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View;
+package canacollector.cc.com.example.android.canacollectormanager.View.Main;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
+import canacollector.cc.com.example.android.canacollectormanager.View.Alembic.AlembicActivity;
+import canacollector.cc.com.example.android.canacollectormanager.View.Management.ManagementActivity;
 
 
 public class MainActivity extends AppCompatActivity {

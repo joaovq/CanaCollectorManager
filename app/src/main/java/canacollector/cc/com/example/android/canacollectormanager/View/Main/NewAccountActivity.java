@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View;
+package canacollector.cc.com.example.android.canacollectormanager.View.Main;
 
 import android.content.Intent;
 import android.os.Bundle;
