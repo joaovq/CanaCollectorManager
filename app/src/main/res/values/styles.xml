@@ -20,4 +20,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MyListView" parent="@android:style/Widget.ListView">
+        <item name="android:listSelector">#bf747474</item>
+    </style>
+
 </resources>

@@ -20,7 +20,12 @@
     <string name="button_text_management">Gestão</string>
     <string name="button_text_production">Alambique</string>
     <string name="button_text_financial">Financeiro</string>
-    <string name="title_activity_management">ManagementActivity</string>
+    <string name="title_activity_management">Gestão</string>
     <string name="title_activity_production">ProductionActivity</string>
     <string name="title_activity_new_user">Adicionar Funcionário</string>
+    <string name="title_activity_users">Funcionários</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_users_details">Detalhes do Funcionário</string>
 </resources>
