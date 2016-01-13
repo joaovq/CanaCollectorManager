@@ -22,6 +22,7 @@ import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 import canacollector.cc.com.example.android.canacollectormanager.View.Model.Cachaca;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.Mosto;
 import canacollector.cc.com.example.android.canacollectormanager.View.Model.Talhao;
 
 public class AlembicGeneralTab extends Fragment{
@@ -46,12 +47,20 @@ public class AlembicGeneralTab extends Fragment{
         return rootView;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        // Make sure that we are currently visible
+        if (this.isVisible()) {
+            toolbar.setTitle("Geral");
+        }
+    }
+
     private void setTextIpunt(){
 
         getAcreage("Talhao");
-        getIndustrialAverageIncome("Cachaca","Moagem");
+        getRendimentoMedioIndustrial("Cachaca", "Mosto");
 
-        TextView industrialAverageIncome   = (TextView) getActivity().findViewById(R.id.industrialAverageIncomeTextInput);
         TextView dailyProduction           = (TextView) getActivity().findViewById(R.id.dailyProductionTextInput);
         TextView inventory                 = (TextView) getActivity().findViewById(R.id.inventoryTextInput);
 
@@ -95,76 +104,46 @@ public class AlembicGeneralTab extends Fragment{
         });
     }
 
-    private void getIndustrialAverageIncome(String className1, String classname2){
-        final Handler handler = new Handler();
-
+    private void getRendimentoMedioIndustrial(String className1, String className2){
         double quantidadeCachaca = 0;
         int quantidadeCanaMoida = 0;
 
+        List<ParseObject> cachacas;
+        List<ParseObject> moagens;
+
         ParseQuery query1 = ParseQuery.getQuery(className1);
         query1.whereEqualTo("alambique", alambique);
-        query1.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    // Results were successfully found, looking first on the
-                    // network and then on disk.
-
-                    double quantidade = 0;
-
-                    for (ParseObject parseObject : scoreList) {
-                        Cachaca temp = (Cachaca) parseObject;
-                        quantidade += temp.getQuantidade();
-                    }
-
-                    final double finalResult = quantidade;
-
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                        }
-                    });
-
-                } else {
-                    //TODO
-                    //Show error on a dialog box
-                    // The network was inaccessible and we have no cached data
-                    // for this query.
-                }
+        try {
+            cachacas = query1.find();
+            for (ParseObject parseObject : cachacas) {
+                Cachaca temp = (Cachaca) parseObject;
+                quantidadeCachaca += temp.getQuantidade();
             }
-        });
+        } catch (ParseException e)
+        {
 
-        ParseQuery query2 = ParseQuery.getQuery(className1);
+        }
+
+        ParseQuery query2 = ParseQuery.getQuery(className2);
         query2.whereEqualTo("alambique", alambique);
-        query2.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    // Results were successfully found, looking first on the
-                    // network and then on disk.
-
-                    double tempArea = 0.0;
-                    for (ParseObject parseObject : scoreList) {
-                        Talhao temp = (Talhao) parseObject;
-                        tempArea += temp.getArea();
-                    }
-
-                    final String finalResult = "" + tempArea;
-
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
-                            acreage.setText(finalResult + " ");
-                        }
-                    });
-
-                } else {
-                    //TODO
-                    //Show error on a dialog box
-                    // The network was inaccessible and we have no cached data
-                    // for this query.
-                }
+        try {
+            moagens = query2.find();
+            for (ParseObject parseObject : moagens) {
+                Mosto temp = (Mosto) parseObject;
+                quantidadeCanaMoida += temp.getCana();
             }
-        });
+        } catch (ParseException e)
+        {
+
+        }
+
+        TextView industrialAverageIncome   = (TextView) getActivity().findViewById(R.id.industrialAverageIncomeTextInput);
+        industrialAverageIncome.setText("" + (quantidadeCachaca/quantidadeCanaMoida));
+
+    }
+
+    private void atualizaRendimento(int tipo){
+
     }
 
     private void setToolbar() {
@@ -182,14 +161,5 @@ public class AlembicGeneralTab extends Fragment{
                 return false;
             }
         });
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        // Make sure that we are currently visible
-        if (this.isVisible()) {
-            toolbar.setTitle("Geral");
-        }
     }
 }

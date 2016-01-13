@@ -31,4 +31,8 @@ public class AlembicProductionTab extends Fragment {
             toolbar.setTitle("Produção");
         }
     }
+
+    private void desenhaGraficoMostoPorTempo(){
+                
+    }
 }
