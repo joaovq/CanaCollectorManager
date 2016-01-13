@@ -63,7 +63,6 @@ public class AlembicActivity extends AppCompatActivity {
             return this.fragments.size();
         }
 
-
     }
 
 }

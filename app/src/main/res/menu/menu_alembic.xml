@@ -9,6 +9,6 @@
         android:id="@+id/button_refresh"
         android:orderInCategory="1"
         android:icon="@drawable/refresh"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:title="Refresh" />
 </menu>

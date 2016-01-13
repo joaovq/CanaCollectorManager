@@ -31,8 +31,8 @@ import canacollector.cc.com.example.android.canacollectormanager.R;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String USER = "Taverna Real";
-    private static final String PASSWORD = "tavernademinas";
+    private static final String USER = "Taverna";
+    private static final String PASSWORD = "taverna";
     private static final String TAG_ERROR = "Failed to Login";
 
     // UI references.
@@ -45,8 +45,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mEmailView.requestFocus();
+        mEmailView.setText(USER);
+
         mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView.setText(PASSWORD);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
