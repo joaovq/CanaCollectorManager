@@ -14,6 +14,12 @@ import com.parse.ParsePush;
 import com.parse.SaveCallback;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.Cachaca;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.ControleFermento;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.Dorna;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.Mosto;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.Talhao;
+import canacollector.cc.com.example.android.canacollectormanager.View.Model.Tonel;
 
 public class ParseUtils {
     private static String TAG = ParseUtils.class.getSimpleName();
@@ -31,6 +37,12 @@ public class ParseUtils {
 
         //Register objects in Parse as well
         ParseObject.registerSubclass(Alambique.class);
+        ParseObject.registerSubclass(Mosto.class);
+        ParseObject.registerSubclass(Talhao.class);
+        ParseObject.registerSubclass(Tonel.class);
+        ParseObject.registerSubclass(Cachaca.class);
+        ParseObject.registerSubclass(Dorna.class);
+        ParseObject.registerSubclass(ControleFermento.class);
 
         // initializing parse library
         Parse.initialize(context, Config.PARSE_APPLICATION_ID, Config.PARSE_CLIENT_KEY);
@@ -39,7 +51,7 @@ public class ParseUtils {
         ParsePush.subscribeInBackground(Config.PARSE_CHANNEL, new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                Log.e(TAG, "Successfully subscribed to Parse!");
+
             }
         });
     }

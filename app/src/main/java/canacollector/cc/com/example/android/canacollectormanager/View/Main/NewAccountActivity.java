@@ -1,6 +1,9 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Main;
 
+import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +26,7 @@ public class NewAccountActivity extends AppCompatActivity {
 
     //UI Elements
     private EditText userNameInput, alambiqueInput, passwordInput, retypePasswordInput;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class NewAccountActivity extends AppCompatActivity {
         passwordInput  = (EditText) findViewById(R.id.passwordTextInput);
         retypePasswordInput = (EditText) findViewById(R.id.retypeTextInput);
         alambiqueInput = (EditText) findViewById(R.id.alambiqueTextInput);
-        alambiqueInput.requestFocus();
+//        alambiqueInput.requestFocus();
 
         Button newAccountButton = (Button) findViewById(R.id.newAccountButton);
         newAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +54,8 @@ public class NewAccountActivity extends AppCompatActivity {
         View focusView  = null;
         Boolean cancel  = false;
         String userName = userNameInput.getText().toString();
-        String password = passwordInput.getText().toString();
+        String password1 = passwordInput.getText().toString();
+        String password2 = retypePasswordInput.getText().toString();
         String alambiqueNome = alambiqueInput.getText().toString();
 
         if(TextUtils.isEmpty(alambiqueNome)) {
@@ -61,15 +66,30 @@ public class NewAccountActivity extends AppCompatActivity {
 
         if(TextUtils.isEmpty(userName)){
             userNameInput.setError(getString(R.string.error_field_required));
-            focusView = userNameInput;
+            if(focusView == null)
+                focusView = userNameInput;
             cancel = true;
         }
 
-        if(TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(password1)){
             passwordInput.setError(getString(R.string.error_field_required));
             if(focusView == null)
                 focusView = passwordInput;
             cancel = true;
+        }
+
+        if(TextUtils.isEmpty(password2)){
+            retypePasswordInput.setError(getString(R.string.error_field_required));
+            if(focusView == null)
+                focusView = retypePasswordInput;
+            cancel = true;
+        } else{
+            if(!password1.equals(password2)) {
+                retypePasswordInput.setError("As senhas devem ser iguais!");
+                if (focusView == null)
+                    focusView = retypePasswordInput;
+                cancel = true;
+            }
         }
 
         if(TextUtils.isEmpty(alambiqueNome)){
@@ -82,6 +102,9 @@ public class NewAccountActivity extends AppCompatActivity {
         if(cancel)
             focusView.requestFocus();
         else{
+            pDialog = showProgress();
+            Log.w("NewAccountActivity","Showing");
+
             if (AppUtils.isOnline(this.getApplicationContext())) {
                 Alambique alambique = new Alambique();
                 alambique.setName(alambiqueNome);
@@ -94,12 +117,13 @@ public class NewAccountActivity extends AppCompatActivity {
 
                 ParseUser user = new ParseUser();
                 user.setUsername(userName);
-                user.setPassword(password);
+                user.setPassword(password1);
                 user.put("alambique", alambique);
 
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
+                            pDialog.dismiss();
                             Intent intent = new Intent(NewAccountActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {
@@ -110,8 +134,18 @@ public class NewAccountActivity extends AppCompatActivity {
                 });
             }
             else
-                Toast.makeText(this, "Verifique sua conexao com a internet e tente novamente...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Verifique sua conexão com a internet e tente novamente!", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+    private ProgressDialog showProgress() {
+        final ProgressDialog pDialog = new ProgressDialog(NewAccountActivity.this);
+        pDialog.setMessage(getString(R.string.message_attempting_new_account));
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(true);
+        pDialog.show();
+        return pDialog;
     }
 }

@@ -64,7 +64,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Espaço para texto"
         android:id="@+id/acreageTextInput"
         android:textSize="25dp"
         android:textColor="#ffffff"
@@ -75,7 +74,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Espaço para respota"
         android:id="@+id/industrialAverageIncomeTextInput"
         android:textColor="#ffffff"
         android:textSize="25dp"
@@ -86,7 +84,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Espaço para respota"
         android:id="@+id/dailyProductionTextInput"
         android:textSize="25dp"
         android:textColor="#ffffff"
@@ -97,7 +94,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Espaço para resposta"
         android:id="@+id/inventoryTextInput"
         android:textColor="#ffffff"
         android:textSize="25dp"
