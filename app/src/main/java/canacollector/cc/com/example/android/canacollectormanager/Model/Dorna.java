@@ -1,9 +1,8 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Model;
+package canacollector.cc.com.example.android.canacollectormanager.Model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import java.util.UUID;
 

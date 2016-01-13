@@ -21,9 +21,9 @@ import java.util.List;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Cachaca;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Mosto;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Talhao;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
 
 public class AlembicGeneralTab extends Fragment{
     private Toolbar toolbar;
