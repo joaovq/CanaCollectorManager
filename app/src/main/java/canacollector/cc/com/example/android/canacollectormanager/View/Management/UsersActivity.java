@@ -101,6 +101,7 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_management, menu);
+        menu.findItem(R.id.button_refresh).setVisible(false);
         return true;
     }
 
@@ -121,10 +122,9 @@ public class UsersActivity extends AppCompatActivity {
         AlertDialog.Builder userDetails = new AlertDialog.Builder(UsersActivity.this);
         userDetails.setMessage(message);
         userDetails.setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
-
-            public void onClick(DialogInterface arg0, int arg1) {
+            public void onClick(DialogInterface dialog, int arg1) {
+                dialog.cancel();
             }
-
         });
 
         AlertDialog alert = userDetails.create();
