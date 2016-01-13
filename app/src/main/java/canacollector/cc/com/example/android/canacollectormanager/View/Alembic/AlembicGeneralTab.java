@@ -57,7 +57,7 @@ public class AlembicGeneralTab extends Fragment{
 
 
     }
-
+    //Retorna a area total de totos os talhoes cadastrados no alambique
     private void getAcreage(String className){
         final Handler handler = new Handler();
 
@@ -77,13 +77,16 @@ public class AlembicGeneralTab extends Fragment{
 
                     final String finalResult = "" + tempArea;
 
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
-                            acreage.setText(finalResult + " hectare");
-                        }
-                    });
+                    TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
+                    acreage.setText(finalResult + " hectare");
+
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
+//                            acreage.setText(finalResult + " hectare");
+//                        }
+//                    });
 
                 } else {
                     //TODO
@@ -94,6 +97,8 @@ public class AlembicGeneralTab extends Fragment{
             }
         });
     }
+
+    pu
 
     private void getIndustrialAverageIncome(String className1, String classname2){
         final Handler handler = new Handler();
