@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
-import canacollector.cc.com.example.android.canacollectormanager.View.Alembic.AlembicActivity;
 import canacollector.cc.com.example.android.canacollectormanager.View.Management.ManagementActivity;
 
 
@@ -43,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         productionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,AlembicActivity.class);
-                startActivity(intent);
+//                getFragmentManager().beginTransaction()
+//                        .add(0, new UserDetails()).commit();
             }
         });
     }
