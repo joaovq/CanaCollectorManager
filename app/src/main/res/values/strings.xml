@@ -17,6 +17,7 @@
     <string name="message_leaving_app">Finalizando! Aguarde...</string>
     <string name="message_atempting_login">Logando! Aguarde...</string>
     <string name="message_type_again">Aperte mais uma vez para sair</string>
+    <string name="message_attempting_new_account">Criando nova conta...</string>
     <string name="button_text_management">Gestão</string>
     <string name="button_text_production">Alambique</string>
     <string name="button_text_financial">Financeiro</string>
