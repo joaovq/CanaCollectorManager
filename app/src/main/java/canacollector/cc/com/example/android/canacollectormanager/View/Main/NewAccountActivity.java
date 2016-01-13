@@ -5,22 +5,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.R;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 
 public class NewAccountActivity extends AppCompatActivity {
 
     //UI Elements
-    private EditText userNameInput;
-    private EditText passwordInput;
-    private EditText emailInput;
+    private EditText userNameInput, alambiqueInput, passwordInput, retypePasswordInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,10 @@ public class NewAccountActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         userNameInput  = (EditText) findViewById(R.id.userNameTextInput);
-        userNameInput.requestFocus();
         passwordInput  = (EditText) findViewById(R.id.passwordTextInput);
-        emailInput     = (EditText) findViewById(R.id.emailTextInput);
+        retypePasswordInput = (EditText) findViewById(R.id.retypeTextInput);
+        alambiqueInput = (EditText) findViewById(R.id.alambiqueTextInput);
+        alambiqueInput.requestFocus();
 
         Button newAccountButton = (Button) findViewById(R.id.newAccountButton);
         newAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +51,13 @@ public class NewAccountActivity extends AppCompatActivity {
         Boolean cancel  = false;
         String userName = userNameInput.getText().toString();
         String password = passwordInput.getText().toString();
-        String email    = emailInput.getText().toString();
+        String alambiqueNome = alambiqueInput.getText().toString();
+
+        if(TextUtils.isEmpty(alambiqueNome)) {
+            alambiqueInput.setError("Campo obrigatório");
+            focusView = alambiqueInput;
+            cancel = true;
+        }
 
         if(TextUtils.isEmpty(userName)){
             userNameInput.setError(getString(R.string.error_field_required));
@@ -63,32 +72,45 @@ public class NewAccountActivity extends AppCompatActivity {
             cancel = true;
         }
 
-        if(TextUtils.isEmpty(email)){
-            emailInput.setError(getString(R.string.error_field_required));
+        if(TextUtils.isEmpty(alambiqueNome)){
+            alambiqueInput.setError(getString(R.string.error_field_required));
             if(focusView == null)
-                focusView = emailInput;
+                focusView = alambiqueInput;
             cancel = true;
         }
 
         if(cancel)
             focusView.requestFocus();
         else{
-            ParseUser user = new ParseUser();
-            user.setUsername(userName);
-            user.setPassword(password);
-            user.setEmail(email);
-
-            user.signUpInBackground(new SignUpCallback() {
-                public void done(ParseException e) {
-                    if (e == null) {
-                        Intent intent = new Intent(NewAccountActivity.this,LoginActivity.class);
-                        startActivity(intent);
-                    } else {
-                        System.out.println(e.toString());
-                        return;
-                    }
+            if (AppUtils.isOnline(this.getApplicationContext())) {
+                Alambique alambique = new Alambique();
+                alambique.setName(alambiqueNome);
+                try {
+                    alambique.save();
                 }
-            });
+                catch (Exception e) {
+                    Log.e("Criando o alambique:" , e.toString());
+                }
+
+                ParseUser user = new ParseUser();
+                user.setUsername(userName);
+                user.setPassword(password);
+                user.put("alambique", alambique);
+
+                user.signUpInBackground(new SignUpCallback() {
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Intent intent = new Intent(NewAccountActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            System.out.println(e.toString());
+                            return;
+                        }
+                    }
+                });
+            }
+            else
+                Toast.makeText(this, "Verifique sua conexao com a internet e tente novamente...", Toast.LENGTH_LONG).show();
         }
 
     }

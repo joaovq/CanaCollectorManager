@@ -9,8 +9,11 @@ import android.widget.Toast;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
+import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.SaveCallback;
+
+import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 
 public class ParseUtils {
     private static String TAG = ParseUtils.class.getSimpleName();
@@ -27,7 +30,7 @@ public class ParseUtils {
         // Parse.enableLocalDatastore(this);
 
         //Register objects in Parse as well
-       //TODO
+        ParseObject.registerSubclass(Alambique.class);
 
         // initializing parse library
         Parse.initialize(context, Config.PARSE_APPLICATION_ID, Config.PARSE_CLIENT_KEY);
