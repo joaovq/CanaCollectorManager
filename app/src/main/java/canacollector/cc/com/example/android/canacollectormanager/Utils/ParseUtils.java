@@ -3,7 +3,6 @@ package canacollector.cc.com.example.android.canacollectormanager.Utils;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.parse.Parse;
@@ -14,12 +13,12 @@ import com.parse.ParsePush;
 import com.parse.SaveCallback;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Cachaca;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.ControleFermento;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Dorna;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Mosto;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Talhao;
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Tonel;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
+import canacollector.cc.com.example.android.canacollectormanager.Model.ControleFermento;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Dorna;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Tonel;
 
 public class ParseUtils {
     private static String TAG = ParseUtils.class.getSimpleName();
