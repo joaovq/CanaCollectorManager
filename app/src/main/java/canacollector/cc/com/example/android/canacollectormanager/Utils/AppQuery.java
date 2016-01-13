@@ -10,7 +10,8 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
-import canacollector.cc.com.example.android.canacollectormanager.View.Model.Tonel;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Tonel;
+
 
 /**
  * Created by Breno on 1/13/2016.
