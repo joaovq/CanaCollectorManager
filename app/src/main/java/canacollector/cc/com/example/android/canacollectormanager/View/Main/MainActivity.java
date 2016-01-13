@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 import canacollector.cc.com.example.android.canacollectormanager.View.Alembic.AlembicActivity;
 import canacollector.cc.com.example.android.canacollectormanager.View.Management.ManagementActivity;
 
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Recupera dados do servidor e salva em cache para futuras consultas
+        recoverDataInBackgroung();
 
         Button managementButton = (Button) findViewById(R.id.managemetButton);
         managementButton.setOnClickListener(new View.OnClickListener() {
@@ -99,4 +103,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    protected void recoverDataInBackgroung() {
+        AppQuery.getEstoqueTotalFromServer();
+        AppQuery.getProducaoFromServer();
+    }
 }

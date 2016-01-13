@@ -20,6 +20,8 @@ import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique
  * Created by Breno on 1/12/2016.
  */
 public class AppUtils {
+
+    //Verifica se o usuário está conectado à internet
     public static boolean isOnline(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -86,3 +88,4 @@ public class AppUtils {
         return alambique;
     }
 }
+

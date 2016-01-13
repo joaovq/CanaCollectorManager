@@ -25,6 +25,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 
 /**
  * A login screen that offers login via email/password.
@@ -141,6 +143,9 @@ public class LoginActivity extends AppCompatActivity {
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {
                         pDialog.dismiss();
+                        //Recupera dados do estoque total
+                        AppUtils.getAlambiqueFromParse();
+
                         loginSucessful();
                     } else {
                         // Signup failed. Look at the ParseException to see what happened.
@@ -174,6 +179,8 @@ public class LoginActivity extends AppCompatActivity {
     private void loginSucessful() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        Log.d("O ALAMBIUE EH", AppUtils.getAlambique().getName());
+        //AppQuery.getEstoqueTotalFromServer();
         finish();
     }
 }

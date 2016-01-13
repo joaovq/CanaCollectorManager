@@ -20,6 +20,7 @@ import java.util.List;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.R;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
@@ -58,96 +59,98 @@ public class AlembicGeneralTab extends Fragment{
 
     private void setTextIpunt(){
 
-        getAcreage("Talhao");
-        getRendimentoMedioIndustrial("Cachaca", "Mosto");
+//        getAcreage("Talhao");
+//        getRendimentoMedioIndustrial("Cachaca", "Mosto");
 
         TextView dailyProduction           = (TextView) getActivity().findViewById(R.id.dailyProductionTextInput);
-        TextView inventory                 = (TextView) getActivity().findViewById(R.id.inventoryTextInput);
-
-
-    }
-    //Retorna a area total de totos os talhoes cadastrados no alambique
-    private void getAcreage(String className){
-        final Handler handler = new Handler();
-
-        ParseQuery query = ParseQuery.getQuery(className);
-        query.whereEqualTo("alambique", alambique);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    // Results were successfully found, looking first on the
-                    // network and then on disk.
-
-                    double tempArea = 0.0;
-                    for(ParseObject parseObject : scoreList) {
-                            Talhao temp = (Talhao) parseObject;
-                            tempArea += temp.getArea();
-                    }
-
-                    final String finalResult = "" + tempArea;
-
-                    TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
-                    acreage.setText(finalResult + " hectare");
-
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
-//                            acreage.setText(finalResult + " hectare");
-//                        }
-//                    });
-
-                } else {
-                    //TODO
-                    //Show error on a dialog box
-                    // The network was inaccessible and we have no cached data
-                    // for this query.
-                }
-            }
-        });
-    }
-
-    private void getRendimentoMedioIndustrial(String className1, String className2){
-        double quantidadeCachaca = 0;
-        int quantidadeCanaMoida = 0;
-
-        List<ParseObject> cachacas;
-        List<ParseObject> moagens;
-
-        ParseQuery query1 = ParseQuery.getQuery(className1);
-        query1.whereEqualTo("alambique", alambique);
-        try {
-            cachacas = query1.find();
-            for (ParseObject parseObject : cachacas) {
-                Cachaca temp = (Cachaca) parseObject;
-                quantidadeCachaca += temp.getQuantidade();
-            }
-        } catch (ParseException e)
-        {
-
-        }
-
-        ParseQuery query2 = ParseQuery.getQuery(className2);
-        query2.whereEqualTo("alambique", alambique);
-        try {
-            moagens = query2.find();
-            for (ParseObject parseObject : moagens) {
-                Mosto temp = (Mosto) parseObject;
-                quantidadeCanaMoida += temp.getCana();
-            }
-        } catch (ParseException e)
-        {
-
-        }
-
-        TextView industrialAverageIncome   = (TextView) getActivity().findViewById(R.id.industrialAverageIncomeTextInput);
-        industrialAverageIncome.setText("" + (quantidadeCachaca/quantidadeCanaMoida));
+        TextView estoqueTotal              = (TextView) getActivity().findViewById(R.id.inventoryTextInput);
+        Log.w("Valor do estoque total:", AppQuery.getEstoqueTotal().toString());
+        //estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
+        Log.w("Producao diaria media", AppQuery.getProducaoMedia().toString());
 
     }
-
-    private void atualizaRendimento(int tipo){
-
-    }
+//    //Retorna a area total de totos os talhoes cadastrados no alambique
+//    private void getAcreage(String className){
+//        final Handler handler = new Handler();
+//
+//        ParseQuery query = ParseQuery.getQuery(className);
+//        query.whereEqualTo("alambique", alambique);
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            public void done(List<ParseObject> scoreList, ParseException e) {
+//                if (e == null) {
+//                    // Results were successfully found, looking first on the
+//                    // network and then on disk.
+//
+//                    double tempArea = 0.0;
+//                    for(ParseObject parseObject : scoreList) {
+//                            Talhao temp = (Talhao) parseObject;
+//                            tempArea += temp.getArea();
+//                    }
+//
+//                    final String finalResult = "" + tempArea;
+//
+//                    TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
+//                    acreage.setText(finalResult + " hectare");
+//
+////                    handler.post(new Runnable() {
+////                        @Override
+////                        public void run() {
+////                            TextView acreage = (TextView) getActivity().findViewById(R.id.acreageTextInput);
+////                            acreage.setText(finalResult + " hectare");
+////                        }
+////                    });
+//
+//                } else {
+//                    //TODO
+//                    //Show error on a dialog box
+//                    // The network was inaccessible and we have no cached data
+//                    // for this query.
+//                }
+//            }
+//        });
+//    }
+//
+//    private void getRendimentoMedioIndustrial(String className1, String className2){
+//        double quantidadeCachaca = 0;
+//        int quantidadeCanaMoida = 0;
+//
+//        List<ParseObject> cachacas;
+//        List<ParseObject> moagens;
+//
+//        ParseQuery query1 = ParseQuery.getQuery(className1);
+//        query1.whereEqualTo("alambique", alambique);
+//        try {
+//            cachacas = query1.find();
+//            for (ParseObject parseObject : cachacas) {
+//                Cachaca temp = (Cachaca) parseObject;
+//                quantidadeCachaca += temp.getQuantidade();
+//            }
+//        } catch (ParseException e)
+//        {
+//
+//        }
+//
+//        ParseQuery query2 = ParseQuery.getQuery(className2);
+//        query2.whereEqualTo("alambique", alambique);
+//        try {
+//            moagens = query2.find();
+//            for (ParseObject parseObject : moagens) {
+//                Mosto temp = (Mosto) parseObject;
+//                quantidadeCanaMoida += temp.getCana();
+//            }
+//        } catch (ParseException e)
+//        {
+//
+//        }
+//
+//        TextView industrialAverageIncome   = (TextView) getActivity().findViewById(R.id.industrialAverageIncomeTextInput);
+//        industrialAverageIncome.setText("" + (quantidadeCachaca/quantidadeCanaMoida));
+//
+//    }
+//
+//    private void atualizaRendimento(int tipo){
+//
+//    }
 
     private void setToolbar() {
         toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
