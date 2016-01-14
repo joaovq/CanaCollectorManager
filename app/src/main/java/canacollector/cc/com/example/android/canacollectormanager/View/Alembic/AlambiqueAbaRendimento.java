@@ -12,27 +12,23 @@ import canacollector.cc.com.example.android.canacollectormanager.R;
 /**
  * Created by joaovq on 11/01/16.
  */
-public class AlembicProductionTab extends Fragment {
+public class AlambiqueAbaRendimento extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.content_alambique_aba_producao, container, false);
+                R.layout.content_alambique_aba_rendimento, container, false);
 
         return rootView;
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        // Make sure that we are currently visible
-        if (this.isVisible()) {
+    public void setMenuVisibility(final boolean visible) {
+        super.setMenuVisibility(visible);
+        if (visible) {
             Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-            toolbar.setTitle("Produção");
+            toolbar.setTitle("Rendimento");
         }
-    }
-
-    private void desenhaGraficoMostoPorTempo(){
-                
     }
 }

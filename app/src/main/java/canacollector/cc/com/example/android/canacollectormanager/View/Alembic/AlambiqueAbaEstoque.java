@@ -12,7 +12,7 @@ import canacollector.cc.com.example.android.canacollectormanager.R;
 /**
  * Created by joaovq on 11/01/16.
  */
-public class AlembicInventoryTab extends Fragment {
+public class AlambiqueAbaEstoque extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Área reserva:"
-        android:id="@+id/areaTotalDosTalhoes"
+        android:id="@+id/areaReservaLabel"
         android:textColor="#ffffff"
         android:textSize="25dp"
         android:layout_marginTop="17dp"
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Área total dos talhões:"
-        android:id="@+id/rendimentoIndustrialMedioLabel"
-        android:layout_below="@+id/areaTotalDosTalhoes"
+        android:id="@+id/areaTotalTalhoesLabel"
+        android:layout_below="@+id/areaReservaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="94dp"
@@ -33,22 +33,26 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/areaTotalTalhoesInput"
+        android:id="@+id/areaReservaInput"
         android:textSize="25dp"
         android:textColor="#ffffff"
-        android:layout_below="@+id/areaTotalDosTalhoes"
+        android:layout_below="@+id/areaReservaLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rendimentoIndustrialMedioInput"
+        android:id="@+id/areaTotalTalhoesInput"
         android:textColor="#ffffff"
         android:textSize="25dp"
-        android:layout_below="@+id/rendimentoIndustrialMedioLabel"
+        android:layout_below="@+id/areaTotalTalhoesLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

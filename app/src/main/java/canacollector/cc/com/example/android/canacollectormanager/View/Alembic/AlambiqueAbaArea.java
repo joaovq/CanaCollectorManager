@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 
@@ -19,6 +20,10 @@ public class AlambiqueAbaArea extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.content_alambique_aba_area, container, false);
+
+        TextView areaTotalTalhoes = (TextView) rootView.findViewById(R.id.areaTotalTalhoesInput);
+
+        TextView areaReserva = (TextView) rootView.findViewById(R.id.areaReservaInput);
 
         return rootView;
     }

@@ -33,7 +33,7 @@ public class AlambiqueAbaGeral extends Fragment{
 
         setToolbar();
 
-//        TextView areaTotal = (TextView) rootView.findViewById(R.id.areaTotalDosTalhoes);
+        TextView areaTotal = (TextView) rootView.findViewById(R.id.areaReservaLabel);
 //        areaTotal.setText(AppQuery.geta().toString());
 
         TextView estoqueTotal = (TextView) rootView.findViewById(R.id.estoqueTotalInput);
@@ -42,7 +42,7 @@ public class AlambiqueAbaGeral extends Fragment{
         TextView producaoDiaria = (TextView) rootView.findViewById(R.id.producaoDiariaMediaInput);
         producaoDiaria.setText(AppQuery.getProducaoMedia().toString());
 
-//        TextView rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.rendimentoMedioIndustrialInput);
+        TextView rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.areaReservaInput);
 //        rendimentoIndustrialMedio.setText(AppQuery.get);
 
         return rootView;
