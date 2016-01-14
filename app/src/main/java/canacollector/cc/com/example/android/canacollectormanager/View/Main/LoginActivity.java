@@ -23,6 +23,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 
@@ -137,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             pDialog = MyProgressDialog.getProgressDialog(this,getString(R.string.message_atempting_login));
-
+            pDialog.show();
             ParseUser.logInInBackground(USER, PASSWORD, new LogInCallback() {
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {

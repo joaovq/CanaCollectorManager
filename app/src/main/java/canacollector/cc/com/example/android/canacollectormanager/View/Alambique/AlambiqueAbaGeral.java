@@ -17,7 +17,7 @@ import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 
 public class AlambiqueAbaGeral extends Fragment{
     private Toolbar toolbar;
-    private final Alambique alambique = AppUtils.getAlambique();
+    private final Alambique alambique = AppQuery.getAlambique();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

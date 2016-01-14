@@ -15,6 +15,7 @@ import java.util.List;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Tonel;
 
@@ -26,6 +27,7 @@ public class AppQuery {
     final static String ESTOQUE_TOTAL = "estoqueTotal";
     final static String PRODUCAO_TOTAL = "producaoTotal";
     final static String AREA_TOTAL = "areaTotal";
+    final static String MOSTO_TOTAL = "mostoTotal";
 
     //Consulta no servidor o alambique onde o usuário está cadastrado e salva local
     public static void getAlambiqueFromParse() {
@@ -216,6 +218,47 @@ public class AppQuery {
                 });
             }
         });
+    }
+
+    //RETORNA TODOS OS DADOS REFERENTES A MOAGEM/MOSTO NO SERVER
+    public static void getMostoTotalFromServer() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
+        query.whereEqualTo("alambique", getAlambique());
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(final List<ParseObject> mostoList, ParseException e) {
+                if (e != null) {
+                    Log.e("AppQuery", e.toString());
+                    return;
+                }
+
+                // Release any objects previously pinned for this query.
+                ParseObject.unpinAllInBackground(MOSTO_TOTAL, mostoList, new DeleteCallback() {
+                    public void done(ParseException e) {
+                        if (e != null) {
+                            Log.e("AppQuery", e.toString());
+                            return;
+                        }
+
+                        // Add the latest results for this query to the cache.
+                        ParseObject.pinAllInBackground(MOSTO_TOTAL, mostoList);
+                    }
+                });
+            }
+        });
+    }
+
+    public static List<ParseObject> getAllMosto () {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
+        query.fromLocalDatastore();
+
+        List<ParseObject> mostoList = new ArrayList<>();
+        try {
+            mostoList = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQueria::getAllMosto", e.toString());
+        }
+        return mostoList;
     }
 
     public static Double getAreaTotal() {
