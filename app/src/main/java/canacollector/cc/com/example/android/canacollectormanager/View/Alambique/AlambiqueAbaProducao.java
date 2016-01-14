@@ -34,7 +34,7 @@ public class AlambiqueAbaProducao extends Fragment {
                 R.layout.content_alambique_aba_producao, container, false);
 
         XYPlot grafico1 = (XYPlot) rootView.findViewById(R.id.graficoQtdMostoPorTempo);
-        gerarGrafico1(grafico1);
+        gerarGraficoMoagem(grafico1);
 
         return rootView;
     }
@@ -49,7 +49,7 @@ public class AlambiqueAbaProducao extends Fragment {
         }
     }
 
-    private void gerarGrafico1(XYPlot grafico){
+    private void gerarGraficoMoagem(XYPlot grafico){
         List<ParseObject> mostos = AppQuery.getAllMosto();
 
         Log.w("Alambique Aba Geral", "" + mostos.size());

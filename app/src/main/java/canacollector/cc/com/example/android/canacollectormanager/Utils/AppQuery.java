@@ -15,6 +15,7 @@ import java.util.List;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
+import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Tonel;
 
@@ -324,7 +325,30 @@ public class AppQuery {
                 total += prodResult.getQuantidade();
             }
         } catch (ParseException e) {
-            Log.e("AppQuery:getTotalCachaca", e.toString());
+            Log.e("AppQuery:TotalCachaca", e.toString());
+        }
+        return total;
+    }
+
+    public static Double getCanaMoidaTotal () {
+        Double total = 0.0;
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
+        query.fromLocalDatastore();
+
+        List<ParseObject> objectList;
+        try {
+            objectList = query.find();
+            if (objectList.isEmpty())
+                return total;
+
+            Mosto prodResult;
+            for (ParseObject parseObject : objectList) {
+                prodResult = (Mosto) parseObject;
+                total += prodResult.getCana();
+            }
+        } catch (ParseException e) {
+            Log.e("AppQuery:TotalCanaMoida", e.toString());
         }
         return total;
     }
@@ -350,5 +374,13 @@ public class AppQuery {
         }
 
         return areaTotal;
+    }
+
+    //Retorna o rendimento industrial do alambique (Litros produzidos por tonelada de cana)
+    public static Double getRendimentoIndustrial() {
+        Double cana, cachaca;
+        cachaca = getCachacaTotal();
+        cana = getCanaMoidaTotal();
+        return (cachaca*1000)/cana;
     }
 }
