@@ -10,7 +10,7 @@
         android:background="@android:color/holo_orange_dark" >
 
         <com.androidplot.xy.XYPlot
-            android:id="@+id/plot"
+            android:id="@+id/graficoQtdMostoPorTempo"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_alignParentLeft="true"
@@ -84,7 +84,7 @@
             app:legendHeight="25dp"
             app:legendAnchorPosition="right_bottom"
             android:layout_marginTop="94dp"
-            android:layout_below="@+id/plot"
+            android:layout_below="@+id/graficoQtdMostoPorTempo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 

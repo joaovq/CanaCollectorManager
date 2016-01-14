@@ -18,7 +18,6 @@ import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 import canacollector.cc.com.example.android.canacollectormanager.View.Alambique.AlembiqueActivity;
 import canacollector.cc.com.example.android.canacollectormanager.View.Gestao.GestaoActivity;
-import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         else if(backButtonCount > 1){
             ParseUser.logOut();
             pDialog = MyProgressDialog.getProgressDialog(this,"Finalizando! Aguarde");
+            pDialog.show();
             new WaitingMessage().execute();
         }
     }

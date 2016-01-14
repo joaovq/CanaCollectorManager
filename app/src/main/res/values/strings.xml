@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CachaçaGestor</string>
+    <string name="app_name">Cachaça Gestor</string>
 
     <string name="refreshing_data">Sincronizando dados com o servidor</string>
 

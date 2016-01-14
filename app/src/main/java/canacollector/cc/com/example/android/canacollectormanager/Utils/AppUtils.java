@@ -2,19 +2,6 @@ package canacollector.cc.com.example.android.canacollectormanager.Utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.util.Log;
-
-import com.parse.DeleteCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 
 /**
  * Created by Breno on 1/12/2016.
