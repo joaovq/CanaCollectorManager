@@ -1,5 +1,6 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -14,9 +15,11 @@ import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 
 public class AlambiqueAbaGeral extends Fragment{
     private Toolbar toolbar;
+    private ProgressDialog pDialog;
     private final Alambique alambique = AppQuery.getAlambique();
 
     @Override
@@ -66,7 +69,11 @@ public class AlambiqueAbaGeral extends Fragment{
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.button_refresh:
+                        pDialog = MyProgressDialog.getProgressDialog(AlambiqueAbaGeral.this.getActivity(), getString(R.string.refreshing_data));
+                        pDialog.show();
                         Log.w("Alembic General Tab", "Refresh button clicked");
+                        AppUtils.recoverDataInBackgroung();
+                        pDialog.dismiss();
                         return true;
                 }
                 return false;

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CachaçaGestor</string>
 
+    <string name="refreshing_data">Sincronizando dados com o servidor</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Nome de usuário</string>
     <string name="prompt_password">Senha</string>

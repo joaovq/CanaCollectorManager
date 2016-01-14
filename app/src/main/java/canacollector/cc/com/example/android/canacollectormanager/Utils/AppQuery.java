@@ -87,6 +87,7 @@ public class AppQuery {
         return alambique;
     }
 
+    //Consulta o estoque total do alambique
     public static void getEstoqueTotalFromServer() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
         query.whereEqualTo("alambique", getAlambique());
@@ -141,6 +142,7 @@ public class AppQuery {
         return tonel.getEstoque();
     }
 
+    //Consulta todas as anotacoes de producao de cachaca do server
     public static void getProducaoFromServer() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
         query.whereEqualTo("alambique", getAlambique());
@@ -251,6 +253,7 @@ public class AppQuery {
     public static List<ParseObject> getAllMosto () {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
         query.fromLocalDatastore();
+        query.orderByAscending("createdAt");
 
         List<ParseObject> mostoList = new ArrayList<>();
         try {
@@ -287,9 +290,11 @@ public class AppQuery {
         });
     }
 
+    //Retorna uma lista com todas as Cachacas cadastradas
     public static List<ParseObject> getAllCachaca () {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
         query.fromLocalDatastore();
+        query.orderByAscending("createdAt");
 
         List<ParseObject> objectList = new ArrayList<>();
         try {
@@ -300,19 +305,31 @@ public class AppQuery {
         return objectList;
     }
 
-    public static List<ParseObject> getAllProducao () {
+    //Retorna o total de cachaca produzida
+    public static Double getCachacaTotal () {
+        Double total = 0.0;
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
         query.fromLocalDatastore();
 
-        List<ParseObject> parseObjects = new ArrayList<>();
+        List<ParseObject> objectList;
         try {
-            parseObjects = query.find();
+            objectList = query.find();
+            if (objectList.isEmpty())
+                return total;
+
+            Cachaca prodResult;
+            for (ParseObject parseObject : objectList) {
+                prodResult = (Cachaca) parseObject;
+                total += prodResult.getQuantidade();
+            }
         } catch (ParseException e) {
-            Log.e("AppQueria::getAllMosto", e.toString());
+            Log.e("AppQuery:getTotalCachaca", e.toString());
         }
-        return parseObjects;
+        return total;
     }
 
+    //Retorna a area total de todos os talhoes
     public static Double getAreaTotal() {
         Talhao talhao = new Talhao();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
