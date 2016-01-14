@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Alembic;
+package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,16 +33,16 @@ public class AlambiqueAbaGeral extends Fragment{
 
         setToolbar();
 
-        TextView areaTotal = (TextView) rootView.findViewById(R.id.areaReservaLabel);
+        TextView areaTotal = (TextView) rootView.findViewById(R.id.areaTotalTalhoesGeralInput);
 //        areaTotal.setText(AppQuery.geta().toString());
 
-        TextView estoqueTotal = (TextView) rootView.findViewById(R.id.estoqueTotalInput);
+        TextView estoqueTotal = (TextView) rootView.findViewById(R.id.estoqueTotalGeralInput);
         estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
 
         TextView producaoDiaria = (TextView) rootView.findViewById(R.id.producaoDiariaMediaInput);
         producaoDiaria.setText(AppQuery.getProducaoMedia().toString());
 
-        TextView rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.areaReservaInput);
+        TextView rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.rendimentoIndustrialMedioInput);
 //        rendimentoIndustrialMedio.setText(AppQuery.get);
 
         return rootView;

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Estoque Total:"
-        android:id="@+id/areaReservaLabel"
+        android:id="@+id/estoqueTotalLabel"
         android:textColor="#ffffff"
         android:textSize="25dp"
         android:layout_marginTop="17dp"
@@ -22,13 +22,13 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Estoque em garrafa:"
-        android:id="@+id/areaTotalTalhoesLabel"
-        android:layout_marginTop="40dp"
+        android:id="@+id/estoqueEmGarrafaLabel"
         android:textColor="#ffffff"
         android:textSize="25dp"
-        android:layout_below="@+id/areaReservaInput"
+        android:layout_below="@+id/estoqueEmToneisInput"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="67dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,55 +38,31 @@
         android:id="@+id/estoqueEmToneisLabel"
         android:textColor="#ffffff"
         android:textSize="25dp"
-        android:layout_below="@+id/areaReservaInput"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Estoque no tonel:"
-        android:id="@+id/estoqueTotalLabel"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        android:layout_marginTop="51dp"
-        android:layout_below="@+id/estoqueEmToneisInput"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/estoqueTotalInput"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/areaReservaInput"
-        android:textSize="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Estoque no tonel:"
+        android:id="@+id/estoqueNoTonelXLabel"
         android:textColor="#ffffff"
-        android:layout_below="@+id/areaReservaLabel"
+        android:textSize="25dp"
+        android:layout_marginTop="93dp"
+        android:layout_below="@+id/estoqueEmGarrafaLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/areaReservaInput"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        android:layout_below="@+id/areaTotalTalhoesLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/estoqueEmToneisInput"
+        android:id="@+id/estoqueTotalInput"
         android:textSize="25dp"
         android:textColor="#ffffff"
-        android:layout_below="@+id/estoqueEmToneisLabel"
+        android:layout_below="@+id/estoqueTotalLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -98,12 +74,38 @@
         android:id="@+id/estoqueNoTonelXInput"
         android:textColor="#ffffff"
         android:textSize="25dp"
-        android:layout_below="@+id/estoqueTotalLabel"
+        android:layout_below="@+id/estoqueNoTonelXLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:editable="true"
         android:enabled="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/estoqueEmToneisInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/estoqueEmToneisLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="25dp"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/estoqueEmGarrafaInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/estoqueEmGarrafaLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffff"
+        android:textSize="25dp" />
 
 </RelativeLayout>

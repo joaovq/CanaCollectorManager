@@ -87,5 +87,10 @@ public class AppUtils {
         }
         return alambique;
     }
+
+    public static void recoverDataInBackgroung() {
+        AppQuery.getEstoqueTotalFromServer();
+        AppQuery.getProducaoFromServer();
+    }
 }
 

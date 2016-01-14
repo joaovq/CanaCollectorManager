@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Management;
+package canacollector.cc.com.example.android.canacollectormanager.View.Gestao;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 
-public class ManagementActivity extends AppCompatActivity {
+public class GestaoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class ManagementActivity extends AppCompatActivity {
         usersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManagementActivity.this, UsersActivity.class);
+                Intent intent = new Intent(GestaoActivity.this, UsuariosActivity.class);
                 startActivity(intent);
             }
         });
