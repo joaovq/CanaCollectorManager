@@ -101,18 +101,6 @@ public class AppQuery {
                     return;
                 }
 
-                Double total = 0.0;
-                Tonel tonelResult = new Tonel();
-                for (ParseObject parseObject : tonelList) {
-                    tonelResult = (Tonel) parseObject;
-                    total += tonelResult.getEstoque();
-                }
-
-                tonelResult.setName("Temp");
-                tonelResult.setEstoque(total);
-
-                tonelList.clear();
-                tonelList.add(tonelResult);
                 // Release any objects previously pinned for this query.
                 ParseObject.unpinAllInBackground(ESTOQUE_TOTAL, tonelList, new DeleteCallback() {
                     public void done(ParseException e) {
@@ -120,7 +108,6 @@ public class AppQuery {
                             Log.e("AppQuery", e.toString());
                             return;
                         }
-
                         // Add the latest results for this query to the cache.
                         ParseObject.pinAllInBackground(ESTOQUE_TOTAL, tonelList);
                     }
@@ -135,64 +122,66 @@ public class AppQuery {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
         query.fromLocalDatastore();
 
+        List<ParseObject> objectList = new ArrayList<>();
         try {
-            tonel = (Tonel)query.getFirst();
+            objectList = query.find();
         } catch (ParseException e) {
             Log.e("AppQuery", e.toString());
+        }
+
+        Double total = 0.0;
+        Tonel tonelResult = new Tonel();
+        for (ParseObject parseObject : objectList) {
+            tonelResult = (Tonel) parseObject;
+            total += tonelResult.getEstoque();
         }
         return tonel.getEstoque();
     }
 
-    //Consulta todas as anotacoes de producao de cachaca do server
-    public static void getProducaoFromServer() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
-        query.whereEqualTo("alambique", getAlambique());
-
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(final List<ParseObject> prodList, ParseException e) {
-                if (e != null) {
-                    Log.e("AppQuery", e.toString());
-                    return;
-                }
-
-                Double total = 0.0;
-                Cachaca prodResult = new Cachaca();
-                for (ParseObject parseObject : prodList) {
-                    prodResult = (Cachaca) parseObject;
-                    total += prodResult.getQuantidade();
-                }
-
-                prodResult.setQuantidade(total / prodList.size());
-
-                prodList.clear();
-                prodList.add(prodResult);
-                // Release any objects previously pinned for this query.
-                ParseObject.unpinAllInBackground(PRODUCAO_TOTAL, prodList, new DeleteCallback() {
-                    public void done(ParseException e) {
-                        if (e != null) {
-                            Log.e("AppQuery", e.toString());
-                            return;
-                        }
-                        // Add the latest results for this query to the cache.
-                        ParseObject.pinAllInBackground(PRODUCAO_TOTAL, prodList);
-                    }
-                });
-            }
-        });
-    }
+//    //Consulta todas as anotacoes de producao de cachaca do server
+//    public static void getProducaoFromServer() {
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
+//        query.whereEqualTo("alambique", getAlambique());
+//
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            public void done(final List<ParseObject> prodList, ParseException e) {
+//                if (e != null) {
+//                    Log.e("AppQuery", e.toString());
+//                    return;
+//                }
+//                // Release any objects previously pinned for this query.
+//                ParseObject.unpinAllInBackground(PRODUCAO_TOTAL, prodList, new DeleteCallback() {
+//                    public void done(ParseException e) {
+//                        if (e != null) {
+//                            Log.e("AppQuery", e.toString());
+//                            return;
+//                        }
+//                        // Add the latest results for this query to the cache.
+//                        ParseObject.pinAllInBackground(PRODUCAO_TOTAL, prodList);
+//                    }
+//                });
+//            }
+//        });
+//    }
 
     public static Double getProducaoMedia() {
-        Cachaca prod = new Cachaca();
-
+        List<ParseObject> objectList = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
         query.fromLocalDatastore();
 
         try {
-            prod = (Cachaca)query.getFirst();
+            objectList = query.find();
         } catch (ParseException e) {
             Log.e("AppUtils", "Erro ao executar getAlambique");
         }
-        return prod.getQuantidade();
+
+        Double total = 0.0;
+        Cachaca prodResult = new Cachaca();
+        for (ParseObject parseObject : objectList) {
+            prodResult = (Cachaca) parseObject;
+            total += prodResult.getQuantidade();
+        }
+        return total/objectList.size();
     }
 
     //RETORNA TODOS OS TALHOES DO ALAMBIQUE NO SERVER
@@ -393,22 +382,15 @@ public class AppQuery {
         Talhao talhao = new Talhao();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
         query.fromLocalDatastore();
+        query.whereEqualTo("nome", nomeTalhao);
 
-        List<ParseObject> talhaoList = new ArrayList<>();
         try {
-            talhaoList = query.find();
+            talhao = (Talhao) query.getFirst();
         } catch (ParseException e) {
             Log.e("AppQuerie::getAreaTotal", e.toString());
         }
 
-        Double areaNoTalhao = 0.0;
-        for (ParseObject parseObject : talhaoList ) {
-            talhao = (Talhao) parseObject;
-            if(talhao.getName().equals(nomeTalhao))
-                areaNoTalhao = talhao.getArea();
-        }
-
-        return areaNoTalhao;
+        return talhao.getArea();
     }
 
     public static List<Talhao> getTalhoes(){
@@ -445,26 +427,17 @@ public class AppQuery {
         Tonel tonel = new Tonel();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
         query.fromLocalDatastore();
+        query.whereEqualTo("nome", nomeTonel);
 
-        List<ParseObject> toneisList = new ArrayList<>();
         try {
-            toneisList = query.find();
+            tonel = (Tonel) query.getFirst();
         } catch (ParseException e) {
-            Log.e("AppQuerie::getEstoqueNoTonel", e.toString());
+            Log.e("AppQuerie::EstoqueTonel", e.toString());
         }
-
-        Double estoqueNoTonel = 0.0;
-        for (ParseObject parseObject : toneisList ) {
-            tonel = (Tonel) parseObject;
-            if(tonel.getName().equals(nomeTonel))
-                estoqueNoTonel = tonel.getEstoque();
-        }
-
-        return estoqueNoTonel;
+        return tonel.getEstoque();
     }
 
-    public static List<Tonel> getToneis(){
-        Tonel tonel = new Tonel();
+    public static List<ParseObject> getAllTonel(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
         query.fromLocalDatastore();
 
@@ -472,16 +445,8 @@ public class AppQuery {
         try {
             toneisList = query.find();
         } catch (ParseException e) {
-            Log.e("AppQuerie::getEstoqueNoTonel", e.toString());
+            Log.e("AppQuerie::EstoqueTonel", e.toString());
         }
-
-        List<Tonel> toneis = new ArrayList<Tonel>();
-
-        for (ParseObject parseObject : toneisList ) {
-            tonel = (Tonel) parseObject;
-            toneis.add(tonel);
-        }
-
-        return toneis;
+        return toneisList;
     }
 }

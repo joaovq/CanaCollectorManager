@@ -35,16 +35,16 @@ public class AlambiqueAbaArea extends Fragment implements AdapterView.OnItemSele
                 R.layout.content_alambique_aba_area, container, false);
 
         //Carrega talhoes armazenados no banco da fazenda e insere no spinner
-        List<String> itens = getTalhoes(AppQuery.getTalhoes());
-        talhoes = (Spinner) rootView.findViewById(R.id.listaDeToneisSpinner);
-        talhoes.setOnItemSelectedListener(this);
-        spinnerSetup(itens);
+//        List<String> itens = getTalhoes(AppQuery.getTalhoes());
+//        talhoes = (Spinner) rootView.findViewById(R.id.listaDeToneisSpinner);
+//        talhoes.setOnItemSelectedListener(this);
+//        spinnerSetup(itens);
 
-        areaTotalTalhoes = (TextView) rootView.findViewById(R.id.areaTotalTalhoesInput);
-        areaReserva      = (TextView) rootView.findViewById(R.id.areaReservaInput);
-        areaPorTalhao    = (TextView) rootView.findViewById(R.id.areaPorTalhaoInput);
+        //areaTotalTalhoes = (TextView) rootView.findViewById(R.id.areaTotalTalhoesInput);
+       // areaReserva      = (TextView) rootView.findViewById(R.id.areaReservaInput);
+       // areaPorTalhao    = (TextView) rootView.findViewById(R.id.areaPorTalhaoInput);
 
-        setTextView();
+       // setTextView();
 
         return rootView;
     }

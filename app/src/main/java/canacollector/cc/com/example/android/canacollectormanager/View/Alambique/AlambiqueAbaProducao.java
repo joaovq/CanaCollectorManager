@@ -39,7 +39,7 @@ public class AlambiqueAbaProducao extends Fragment {
         XYPlot grafico2 = (XYPlot) rootView.findViewById(R.id.graficoMoagemPorTempo);
         XYPlot grafico3 = (XYPlot) rootView.findViewById(R.id.graficoProducaoDiariaPorTempo);
 
-        gerarGrafico1(grafico1);
+        gerarGraficoMoagem(grafico1);
         gerarGrafico2(grafico2);
         gerarGrafico3(grafico3);
 

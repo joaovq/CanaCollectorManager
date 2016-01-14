@@ -37,18 +37,18 @@ public class AlambiqueAbaEstoque extends Fragment implements AdapterView.OnItemS
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.content_alambique_aba_estoque, container, false);
 
-        List<String> itens = getToneis(AppQuery.getToneis());
-        Log.w("Estoque Aba", itens.size() + "");
-        toneis = (Spinner) rootView.findViewById(R.id.listaDeToneisSpinner);
-        toneis.setOnItemSelectedListener(this);
-        spinnerSetup(itens);
+        //List<String> itens = getToneis(AppQuery.getAllTonel());
+       // Log.w("Estoque Aba", itens.size() + "");
+        //toneis = (Spinner) rootView.findViewById(R.id.listaDeToneisSpinner);
+        //toneis.setOnItemSelectedListener(this);
+       // spinnerSetup(itens);
 
         estoqueTotal        = (TextView) rootView.findViewById(R.id.estoqueTotalInput);
         estoqueEmToneis     = (TextView) rootView.findViewById(R.id.estoqueEmToneisInput);
         estoqueEmGarrafa    = (TextView) rootView.findViewById(R.id.estoqueEmGarrafaInput);
         estoqueNoTonel      = (TextView) rootView.findViewById(R.id.estoqueNoTonelXInput);
 
-        setTextView();
+        //setTextView();
 
         return rootView;
     }
