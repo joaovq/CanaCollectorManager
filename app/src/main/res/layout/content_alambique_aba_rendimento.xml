@@ -23,19 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Rendimento Total:"
-        android:id="@+id/rendimentoTotalLabel"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        android:layout_below="@+id/produtividadeMediaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="120dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Produtividade média:"
         android:id="@+id/produtividadeMediaLabel"
         android:textColor="#ffffff"
@@ -45,18 +32,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rendimentoTotalInput"
-        android:textSize="25dp"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/rendimentoTotalLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
