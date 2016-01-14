@@ -54,19 +54,19 @@
             android:label="@string/title_activity_new_account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Management.UsersActivity"
+            android:name=".View.Gestao.UsuariosActivity"
             android:label="Funcionários"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Alembic.AlembicActivity"
+            android:name=".View.Alambique.AlembiqueActivity"
             android:label="Alambique"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Management.NewUserActivity"
+            android:name=".View.Gestao.NovoUsuarioActivity"
             android:label="@string/title_activity_new_user"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Management.ManagementActivity"
+            android:name=".View.Gestao.GestaoActivity"
             android:label="@string/title_activity_management"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

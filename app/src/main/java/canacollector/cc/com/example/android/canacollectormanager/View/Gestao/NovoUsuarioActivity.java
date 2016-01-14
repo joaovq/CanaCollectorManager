@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Management;
+package canacollector.cc.com.example.android.canacollectormanager.View.Gestao;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 
-public class NewUserActivity extends AppCompatActivity {
+public class NovoUsuarioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

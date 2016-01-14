@@ -35,5 +35,10 @@ public class AppUtils {
         AppQuery.getProducaoFromServer();
         AppQuery.getAreaTotalFromServer();
     }
+
+    public static void recoverDataInBackgroung() {
+        AppQuery.getEstoqueTotalFromServer();
+        AppQuery.getProducaoFromServer();
+    }
 }
 

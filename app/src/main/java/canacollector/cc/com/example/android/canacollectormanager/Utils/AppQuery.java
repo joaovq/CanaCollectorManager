@@ -134,7 +134,7 @@ public class AppQuery {
         try {
             tonel = (Tonel)query.getFirst();
         } catch (ParseException e) {
-            Log.e("AppUtils", e.toString());
+            Log.e("AppQuery", e.toString());
         }
         return tonel.getEstoque();
     }

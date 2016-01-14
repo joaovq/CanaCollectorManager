@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Alembic;
+package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,7 +13,7 @@ import java.util.List;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 
-public class AlembicActivity extends AppCompatActivity {
+public class AlembiqueActivity extends AppCompatActivity {
 
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
@@ -36,11 +36,11 @@ public class AlembicActivity extends AppCompatActivity {
 
     private List<Fragment> getFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();
-        fList.add(new AlembicGeneralTab());
-        fList.add(new AlembicAreaTab());
-        fList.add(new AlembicIncomeTab());
-        fList.add(new AlembicProductionTab());
-        fList.add(new AlembicInventoryTab());
+        fList.add(new AlambiqueAbaGeral());
+        fList.add(new AlambiqueAbaArea());
+        fList.add(new AlambiqueAbaRendimento());
+        fList.add(new AlambiqueAbaProducao());
+        fList.add(new AlambiqueAbaEstoque());
 
         return fList;
     }

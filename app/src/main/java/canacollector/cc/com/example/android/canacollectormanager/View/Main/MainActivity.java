@@ -1,10 +1,8 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Main;
 
-import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,15 +14,18 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
-import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
-import canacollector.cc.com.example.android.canacollectormanager.View.Alembic.AlembicActivity;
-import canacollector.cc.com.example.android.canacollectormanager.View.Management.ManagementActivity;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
+import canacollector.cc.com.example.android.canacollectormanager.View.Alambique.AlembiqueActivity;
+import canacollector.cc.com.example.android.canacollectormanager.View.Gestao.GestaoActivity;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static int backButtonCount = 0;
+    private ProgressDialog pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         managementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ManagementActivity.class);
+                Intent intent = new Intent(MainActivity.this, GestaoActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         productionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AlembicActivity.class);
+                Intent intent = new Intent(MainActivity.this, AlembiqueActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,19 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
         else if(backButtonCount > 1){
             ParseUser.logOut();
-            showProgress();
+            pDialog = MyProgressDialog.getProgressDialog(this,"Finalizando! Aguarde");
             new WaitingMessage().execute();
         }
-    }
-
-    ProgressDialog pDialog;
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress() {
-        pDialog = new ProgressDialog(MainActivity.this);
-        pDialog.setMessage(getString(R.string.message_leaving_app));
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(true);
-        pDialog.show();
     }
 
     private class WaitingMessage extends AsyncTask<Void, Void, Boolean>{

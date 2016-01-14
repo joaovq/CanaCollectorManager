@@ -1,11 +1,9 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Main;
 
-import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -25,8 +23,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
-import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 
 /**
  * A login screen that offers login via email/password.
@@ -40,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         newAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,NewAccountActivity.class);
+                Intent intent = new Intent(LoginActivity.this, NewAccountActivity.class);
                 startActivity(intent);
             }
         });
@@ -137,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            final ProgressDialog pDialog = showProgress();
+            pDialog = MyProgressDialog.getProgressDialog(this,getString(R.string.message_atempting_login));
 
             ParseUser.logInInBackground(USER, PASSWORD, new LogInCallback() {
                 public void done(ParseUser user, ParseException e) {
@@ -157,19 +156,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private ProgressDialog showProgress() {
-        final ProgressDialog pDialog = new ProgressDialog(LoginActivity.this);
-        pDialog.setMessage(getString(R.string.message_atempting_login));
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(true);
-        pDialog.show();
-        return pDialog;
     }
 
     /**

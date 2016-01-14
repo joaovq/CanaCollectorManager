@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Alembic;
+package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,12 +12,12 @@ import canacollector.cc.com.example.android.canacollectormanager.R;
 /**
  * Created by joaovq on 11/01/16.
  */
-public class AlembicInventoryTab extends Fragment {
+public class AlambiqueAbaEstoque extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.content_alembic_inventory_tab, container, false);
+                R.layout.content_alambique_aba_estoque, container, false);
 
         return rootView;
     }

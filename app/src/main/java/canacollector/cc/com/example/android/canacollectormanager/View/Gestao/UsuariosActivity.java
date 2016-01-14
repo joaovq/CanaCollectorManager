@@ -1,4 +1,4 @@
-package canacollector.cc.com.example.android.canacollectormanager.View.Management;
+package canacollector.cc.com.example.android.canacollectormanager.View.Gestao;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 
-public class UsersActivity extends AppCompatActivity {
+public class UsuariosActivity extends AppCompatActivity {
 
     private ArrayAdapter usersListAdapter;
 
@@ -42,7 +42,7 @@ public class UsersActivity extends AppCompatActivity {
 
                 final String user = usersListAdapter.getItem(position).toString();
 
-                AlertDialog.Builder userSelectedAlert = new AlertDialog.Builder(UsersActivity.this);
+                AlertDialog.Builder userSelectedAlert = new AlertDialog.Builder(UsuariosActivity.this);
                 userSelectedAlert.setMessage("O que deseja fazer?");
                 userSelectedAlert.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
 
@@ -53,7 +53,7 @@ public class UsersActivity extends AppCompatActivity {
                 userSelectedAlert.setNegativeButton("Deletar", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        AlertDialog.Builder deleteUserAlert = new AlertDialog.Builder(UsersActivity.this);
+                        AlertDialog.Builder deleteUserAlert = new AlertDialog.Builder(UsuariosActivity.this);
                         deleteUserAlert.setMessage("Deseja deletar " + user + " ?");
 
                         deleteUserAlert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
@@ -109,7 +109,7 @@ public class UsersActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == R.id.button_new_user){
-            Intent intent = new Intent(this,NewUserActivity.class);
+            Intent intent = new Intent(this,NovoUsuarioActivity.class);
             startActivity(intent);
             return true;
         }
@@ -119,7 +119,7 @@ public class UsersActivity extends AppCompatActivity {
 
     private void createDetailsView(String user){
         String message = "Funcionário: " + user;
-        AlertDialog.Builder userDetails = new AlertDialog.Builder(UsersActivity.this);
+        AlertDialog.Builder userDetails = new AlertDialog.Builder(UsuariosActivity.this);
         userDetails.setMessage(message);
         userDetails.setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int arg1) {
