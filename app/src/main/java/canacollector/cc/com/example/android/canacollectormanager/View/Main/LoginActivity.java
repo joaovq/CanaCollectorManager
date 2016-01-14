@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (user != null) {
                         pDialog.dismiss();
                         //Recupera dados do estoque total
-                        AppUtils.getAlambiqueFromParse();
+                        AppQuery.getAlambiqueFromParse();
 
                         loginSucessful();
                     } else {
@@ -179,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loginSucessful() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        Log.d("O ALAMBIUE EH", AppUtils.getAlambique().getName());
+        Log.d("O ALAMBIUE EH", AppQuery.getAlambique().getName());
         //AppQuery.getEstoqueTotalFromServer();
         finish();
     }

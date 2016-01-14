@@ -28,7 +28,7 @@ import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
 
 public class AlembicGeneralTab extends Fragment{
     private Toolbar toolbar;
-    private final Alambique alambique = AppUtils.getAlambique();
+    private final Alambique alambique = AppQuery.getAlambique();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class AlembicGeneralTab extends Fragment{
         Log.w("Valor do estoque total:", AppQuery.getEstoqueTotal().toString());
         //estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
         Log.w("Producao diaria media", AppQuery.getProducaoMedia().toString());
+        Log.w("Area total dos talhoes", AppQuery.getAreaTotal().toString());
 
     }
 //    //Retorna a area total de totos os talhoes cadastrados no alambique
