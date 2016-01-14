@@ -33,7 +33,17 @@ public class AlambiqueAbaArea extends Fragment implements AdapterView.OnItemSele
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.content_alambique_aba_area, container, false);
+//
+//        //Carrega talhoes armazenados no banco da fazenda e insere no spinner
+//        List<String> itens = getTalhoes(AppQuery.getTalhoes());
+//        talhoes = (Spinner) rootView.findViewById(R.id.listaDeToneisSpinner);
+//        talhoes.setOnItemSelectedListener(this);
+//        spinnerSetup(itens);
+//
+//        areaTotalTalhoes = (TextView) rootView.findViewById(R.id.areaTotalTalhoesInput);
+//        areaReserva      = (TextView) rootView.findViewById(R.id.areaReservaInput);
 
+//        setTextView();
         //Carrega talhoes armazenados no banco da fazenda e insere no spinner
 //        List<String> itens = getTalhoes(AppQuery.getTalhoes());
 //        talhoes = (Spinner) rootView.findViewById(R.id.listaDeToneisSpinner);
