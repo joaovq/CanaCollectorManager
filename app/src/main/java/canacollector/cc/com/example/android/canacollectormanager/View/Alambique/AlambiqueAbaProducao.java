@@ -35,13 +35,12 @@ public class AlambiqueAbaProducao extends Fragment {
                 R.layout.content_alambique_aba_producao, container, false);
 
         XYPlot grafico1 = (XYPlot) rootView.findViewById(R.id.graficoQtdMostoPorTempo);
-        gerarGraficoMoagem(grafico1);
         XYPlot grafico2 = (XYPlot) rootView.findViewById(R.id.graficoMoagemPorTempo);
         XYPlot grafico3 = (XYPlot) rootView.findViewById(R.id.graficoProducaoDiariaPorTempo);
 
-        gerarGrafico1(grafico1);
-        gerarGrafico2(grafico2);
-        gerarGrafico3(grafico3);
+        gerarGraficoMosto(grafico1);
+        gerarGraficoMoagem(grafico2);
+        gerarGraficoProducaoDiaria(grafico3);
 
         return rootView;
     }
@@ -56,7 +55,7 @@ public class AlambiqueAbaProducao extends Fragment {
         }
     }
 
-    private void gerarGraficoMoagem(XYPlot grafico){
+    private void gerarGraficoMosto(XYPlot grafico){
         List<ParseObject> mostos = AppQuery.getAllMosto();
 
         Log.w("Alambique Aba Geral", "" + mostos.size());
@@ -101,7 +100,7 @@ public class AlambiqueAbaProducao extends Fragment {
         grafico.getGraphWidget().setDomainLabelOrientation(-45);
     }
 
-    private void gerarGrafico2(XYPlot grafico){
+    private void gerarGraficoMoagem(XYPlot grafico){
         List<ParseObject> mostos = AppQuery.getAllMosto();
 
         Number[] series1Numbers = new Number[mostos.size()];
@@ -144,7 +143,7 @@ public class AlambiqueAbaProducao extends Fragment {
         grafico.getGraphWidget().setDomainLabelOrientation(-45);
     }
 
-    private void gerarGrafico3(XYPlot grafico){
+    private void gerarGraficoProducaoDiaria(XYPlot grafico){
         List<ParseObject> allCachaca = AppQuery.getAllCachaca();
 
         Log.w("Produção", "" + allCachaca.size());

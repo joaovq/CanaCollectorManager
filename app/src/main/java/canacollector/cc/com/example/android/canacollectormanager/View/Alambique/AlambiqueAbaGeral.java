@@ -49,6 +49,8 @@ public class AlambiqueAbaGeral extends Fragment{
 
         rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.rendimentoIndustrialMedioInput);
 
+        setTextView();
+
         return rootView;
     }
 
@@ -65,8 +67,7 @@ public class AlambiqueAbaGeral extends Fragment{
         areaTotal.setText(AppQuery.getAreaTotal().toString());
         estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
         producaoDiaria.setText(AppQuery.getProducaoMedia().toString());
-
-        //calculando
+        rendimentoIndustrialMedio.setText(AppQuery.getRendimentoIndustrial().toString());
     }
 
     private void setToolbar() {
@@ -83,7 +84,6 @@ public class AlambiqueAbaGeral extends Fragment{
                         setTextView();
                         AlambiqueAbaArea.setTextView();
                         AlambiqueAbaEstoque.setTextView();
-                        AlambiqueAbaRendimento.setTextView();
                         Log.w("Alembic General Tab", "Refresh button clicked");
                         AppUtils.recoverDataInBackgroung();
                         pDialog.dismiss();

@@ -38,7 +38,6 @@ public class AlembiqueActivity extends AppCompatActivity {
         List<Fragment> fList = new ArrayList<Fragment>();
         fList.add(new AlambiqueAbaGeral());
         fList.add(new AlambiqueAbaArea());
-        fList.add(new AlambiqueAbaRendimento());
         fList.add(new AlambiqueAbaProducao());
         fList.add(new AlambiqueAbaEstoque());
 
