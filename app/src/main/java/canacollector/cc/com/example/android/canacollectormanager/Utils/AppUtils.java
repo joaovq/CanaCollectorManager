@@ -34,6 +34,7 @@ public class AppUtils {
         AppQuery.getEstoqueTotalFromServer();
         AppQuery.getProducaoFromServer();
         AppQuery.getAreaTotalFromServer();
+        AppQuery.getMostoTotalFromServer();
     }
 }
 

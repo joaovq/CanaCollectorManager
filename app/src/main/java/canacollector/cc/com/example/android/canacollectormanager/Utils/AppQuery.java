@@ -15,7 +15,6 @@ import java.util.List;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
-import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Tonel;
 
@@ -28,6 +27,7 @@ public class AppQuery {
     final static String PRODUCAO_TOTAL = "producaoTotal";
     final static String AREA_TOTAL = "areaTotal";
     final static String MOSTO_TOTAL = "mostoTotal";
+    final static String CACHACA_TOTAL = "cachacaTotal";
 
     //Consulta no servidor o alambique onde o usuário está cadastrado e salva local
     public static void getAlambiqueFromParse() {
@@ -159,7 +159,7 @@ public class AppQuery {
                     total += prodResult.getQuantidade();
                 }
 
-                prodResult.setQuantidade(total/prodList.size());
+                prodResult.setQuantidade(total / prodList.size());
 
                 prodList.clear();
                 prodList.add(prodResult);
@@ -259,6 +259,58 @@ public class AppQuery {
             Log.e("AppQueria::getAllMosto", e.toString());
         }
         return mostoList;
+    }
+
+    //RETORNA TODOS OS DADOS REFERENTES A PRODUCAO DE CACHACA NO SERVER
+    public static void getProducaoTotalFromServer() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
+        query.whereEqualTo("alambique", getAlambique());
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(final List<ParseObject> objectList, ParseException e) {
+                if (e != null) {
+                    Log.e("AppQuery", e.toString());
+                    return;
+                }
+                // Release any objects previously pinned for this query.
+                ParseObject.unpinAllInBackground(CACHACA_TOTAL, objectList, new DeleteCallback() {
+                    public void done(ParseException e) {
+                        if (e != null) {
+                            Log.e("AppQuery", e.toString());
+                            return;
+                        }
+                        // Add the latest results for this query to the cache.
+                        ParseObject.pinAllInBackground(CACHACA_TOTAL, objectList);
+                    }
+                });
+            }
+        });
+    }
+
+    public static List<ParseObject> getAllCachaca () {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
+        query.fromLocalDatastore();
+
+        List<ParseObject> objectList = new ArrayList<>();
+        try {
+            objectList = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQuery:getAllCachaca", e.toString());
+        }
+        return objectList;
+    }
+
+    public static List<ParseObject> getAllProducao () {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
+        query.fromLocalDatastore();
+
+        List<ParseObject> parseObjects = new ArrayList<>();
+        try {
+            parseObjects = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQueria::getAllMosto", e.toString());
+        }
+        return parseObjects;
     }
 
     public static Double getAreaTotal() {
