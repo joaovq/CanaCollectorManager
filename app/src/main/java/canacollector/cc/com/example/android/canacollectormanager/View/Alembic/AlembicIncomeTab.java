@@ -18,7 +18,7 @@ public class AlembicIncomeTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.content_alembic_income_tab, container, false);
+                R.layout.content_alambique_aba_rendimento, container, false);
 
         return rootView;
     }

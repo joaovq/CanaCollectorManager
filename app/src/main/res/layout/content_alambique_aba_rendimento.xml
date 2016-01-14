@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b7393838"><![CDATA[
+    android:background="@android:color/holo_orange_dark" >
+
+    ]]>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rendimento:"
+        android:id="@+id/areaTotalDosTalhoes"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_marginTop="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rendimento Total:"
+        android:id="@+id/rendimentoIndustrialMedioLabel"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_below="@+id/produtivadeMediaInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="47dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Produtividade média:"
+        android:id="@+id/estoqueEmToneisLabel"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/rendimentoInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rendimentoInput"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/areaTotalDosTalhoes"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rendimentoTotalInput"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_below="@+id/rendimentoIndustrialMedioLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/produtivadeMediaInput"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/estoqueEmToneisLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

@@ -58,7 +58,7 @@
             android:label="Funcionários"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".View.Alembic.AlembicActivity"
+            android:name=".View.Alembic.AlembiqueActivity"
             android:label="Alambique"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

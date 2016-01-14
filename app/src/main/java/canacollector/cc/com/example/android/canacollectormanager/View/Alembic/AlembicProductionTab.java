@@ -17,7 +17,7 @@ public class AlembicProductionTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.content_alembic_production_tab, container, false);
+                R.layout.content_alambique_aba_producao, container, false);
 
         return rootView;
     }

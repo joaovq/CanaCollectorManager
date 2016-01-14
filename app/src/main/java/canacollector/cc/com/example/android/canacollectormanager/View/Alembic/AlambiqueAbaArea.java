@@ -12,13 +12,13 @@ import canacollector.cc.com.example.android.canacollectormanager.R;
 /**
  * Created by joaovq on 11/01/16.
  */
-public class AlembicAreaTab extends Fragment {
+public class AlambiqueAbaArea extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.content_alembic_area_tab, container, false);
+                R.layout.content_alambique_aba_area, container, false);
 
         return rootView;
     }

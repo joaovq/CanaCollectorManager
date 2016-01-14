@@ -17,7 +17,7 @@ import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
-import canacollector.cc.com.example.android.canacollectormanager.View.Alembic.AlembicActivity;
+import canacollector.cc.com.example.android.canacollectormanager.View.Alembic.AlembiqueActivity;
 import canacollector.cc.com.example.android.canacollectormanager.View.Management.ManagementActivity;
 
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         productionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AlembicActivity.class);
+                Intent intent = new Intent(MainActivity.this, AlembiqueActivity.class);
                 startActivity(intent);
             }
         });
