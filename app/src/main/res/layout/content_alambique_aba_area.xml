@@ -54,5 +54,49 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Área por talhão:"
+        android:id="@+id/areaPorTalhaoLabel"
+        android:textSize="22dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/areaTotalTalhoesInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="53dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/areaPorTalhaoInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_below="@+id/areaPorTalhaoLabel"
+        android:layout_toLeftOf="@+id/listaDeToneisSpinner"
+        android:layout_toStartOf="@+id/listaDeToneisSpinner" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaDeToneisSpinner"
+        android:layout_alignTop="@+id/areaPorTalhaoLabel"
+        android:layout_toRightOf="@+id/areaPorTalhaoLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:visibility="visible"
+        android:textSize="22dp"
+        android:backgroundTint="#ffffff"
+        android:singleLine="true"
+        android:textColor="#ffffff"
+        android:spinnerMode="dropdown"
+        android:clickable="false"
+        />
+
 
 </RelativeLayout>

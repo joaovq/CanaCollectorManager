@@ -351,4 +351,105 @@ public class AppQuery {
 
         return areaTotal;
     }
+
+    public static Double getAreaReserva(){
+        Double areaTotal = getAreaTotal();
+        return areaTotal*0.2;
+    }
+
+    public static Double getAreaNoTalhao(String nomeTalhao){
+        Talhao talhao = new Talhao();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
+        query.fromLocalDatastore();
+
+        List<ParseObject> talhaoList = new ArrayList<>();
+        try {
+            talhaoList = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQuerie::getAreaTotal", e.toString());
+        }
+
+        Double areaNoTalhao = 0.0;
+        for (ParseObject parseObject : talhaoList ) {
+            talhao = (Talhao) parseObject;
+            if(talhao.getName().equals(nomeTalhao))
+                areaNoTalhao = talhao.getArea();
+        }
+
+        return areaNoTalhao;
+    }
+
+    public static List<Talhao> getTalhoes(){
+        Talhao talhao = new Talhao();
+        List<Talhao> talhoes = new ArrayList<Talhao>();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
+        query.fromLocalDatastore();
+
+        List<ParseObject> talhaoList = new ArrayList<>();
+        try {
+            talhaoList = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQuerie::getAreaTotal", e.toString());
+        }
+
+        Double areaNoTalhao = 0.0;
+        for (ParseObject parseObject : talhaoList ) {
+            talhao = (Talhao) parseObject;
+            talhoes.add(talhao);
+        }
+
+        return talhoes;
+    }
+
+    public static Double getEstoqueEmToneis(){
+        return getEstoqueTotal();
+    }
+
+    public static Double getEstoqueEmGarrafa(){
+        return 0.0;
+    }
+
+    public static Double getEstoqueNoTonel(String nomeTonel){
+        Tonel tonel = new Tonel();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
+        query.fromLocalDatastore();
+
+        List<ParseObject> toneisList = new ArrayList<>();
+        try {
+            toneisList = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQuerie::getEstoqueNoTonel", e.toString());
+        }
+
+        Double estoqueNoTonel = 0.0;
+        for (ParseObject parseObject : toneisList ) {
+            tonel = (Tonel) parseObject;
+            if(tonel.getName().equals(nomeTonel))
+                estoqueNoTonel = tonel.getEstoque();
+        }
+
+        return estoqueNoTonel;
+    }
+
+    public static List<Tonel> getToneis(){
+        Tonel tonel = new Tonel();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
+        query.fromLocalDatastore();
+
+        List<ParseObject> toneisList = new ArrayList<>();
+        try {
+            toneisList = query.find();
+        } catch (ParseException e) {
+            Log.e("AppQuerie::getEstoqueNoTonel", e.toString());
+        }
+
+        List<Tonel> toneis = new ArrayList<Tonel>();
+
+        for (ParseObject parseObject : toneisList ) {
+            tonel = (Tonel) parseObject;
+            toneis.add(tonel);
+        }
+
+        return toneis;
+    }
 }

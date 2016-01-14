@@ -80,6 +80,10 @@ public class AlambiqueAbaGeral extends Fragment{
                     case R.id.button_refresh:
                         pDialog = MyProgressDialog.getProgressDialog(AlambiqueAbaGeral.this.getActivity(), getString(R.string.refreshing_data));
                         pDialog.show();
+                        setTextView();
+                        AlambiqueAbaArea.setTextView();
+                        AlambiqueAbaEstoque.setTextView();
+                        AlambiqueAbaRendimento.setTextView();
                         Log.w("Alembic General Tab", "Refresh button clicked");
                         AppUtils.recoverDataInBackgroung();
                         pDialog.dismiss();
