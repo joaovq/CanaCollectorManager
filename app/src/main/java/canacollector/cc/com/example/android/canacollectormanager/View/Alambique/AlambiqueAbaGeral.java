@@ -13,10 +13,14 @@ import android.widget.TextView;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
-import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 
 public class AlambiqueAbaGeral extends Fragment{
     private Toolbar toolbar;
+    private TextView areaTotal;
+    private TextView estoqueTotal;
+    private TextView producaoDiaria;
+    private TextView rendimentoIndustrialMedio;
+
     private final Alambique alambique = AppQuery.getAlambique();
 
     @Override
@@ -33,17 +37,13 @@ public class AlambiqueAbaGeral extends Fragment{
 
         setToolbar();
 
-        TextView areaTotal = (TextView) rootView.findViewById(R.id.areaTotalTalhoesGeralInput);
-//        areaTotal.setText(AppQuery.geta().toString());
+        areaTotal = (TextView) rootView.findViewById(R.id.areaTotalTalhoesGeralInput);
 
-        TextView estoqueTotal = (TextView) rootView.findViewById(R.id.estoqueTotalGeralInput);
-        estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
+        estoqueTotal = (TextView) rootView.findViewById(R.id.estoqueTotalGeralInput);
 
-        TextView producaoDiaria = (TextView) rootView.findViewById(R.id.producaoDiariaMediaInput);
-        producaoDiaria.setText(AppQuery.getProducaoMedia().toString());
+        producaoDiaria = (TextView) rootView.findViewById(R.id.producaoDiariaMediaInput);
 
-        TextView rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.rendimentoIndustrialMedioInput);
-//        rendimentoIndustrialMedio.setText(AppQuery.get);
+        rendimentoIndustrialMedio = (TextView) rootView.findViewById(R.id.rendimentoIndustrialMedioInput);
 
         return rootView;
     }
@@ -55,6 +55,14 @@ public class AlambiqueAbaGeral extends Fragment{
         if (this.isVisible()) {
             toolbar.setTitle("Geral");
         }
+    }
+
+    private void setTextView(){
+        areaTotal.setText(AppQuery.getAreaTotal().toString());
+        estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
+        producaoDiaria.setText(AppQuery.getProducaoMedia().toString());
+
+        //calculando
     }
 
     private void setToolbar() {

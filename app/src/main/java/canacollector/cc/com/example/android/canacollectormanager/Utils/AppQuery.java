@@ -15,7 +15,6 @@ import java.util.List;
 
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
-import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Talhao;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Tonel;
 
@@ -159,7 +158,7 @@ public class AppQuery {
                     total += prodResult.getQuantidade();
                 }
 
-                prodResult.setQuantidade(total/prodList.size());
+                prodResult.setQuantidade(total / prodList.size());
 
                 prodList.clear();
                 prodList.add(prodResult);
@@ -251,6 +250,7 @@ public class AppQuery {
     public static List<ParseObject> getAllMosto () {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
         query.fromLocalDatastore();
+        query.orderByAscending("createdAt");
 
         List<ParseObject> mostoList = new ArrayList<>();
         try {
