@@ -3,9 +3,6 @@ package canacollector.cc.com.example.android.canacollectormanager.Utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
-/**
- * Created by Breno on 1/12/2016.
- */
 public class AppUtils {
 
     //Verifica se o usuário está conectado à internet
@@ -19,7 +16,7 @@ public class AppUtils {
 
     public static void recoverDataInBackgroung() {
         AppQuery.getEstoqueTotalFromServer();
-        AppQuery.getProducaoFromServer();
+        AppQuery.getProducaoTotalFromServer();
         AppQuery.getProducaoTotalFromServer();
         AppQuery.getAreaTotalFromServer();
         AppQuery.getMostoTotalFromServer();
