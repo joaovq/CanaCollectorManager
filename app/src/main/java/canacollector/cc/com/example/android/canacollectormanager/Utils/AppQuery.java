@@ -441,4 +441,23 @@ public class AppQuery {
         }
         return toneisList;
     }
+
+    public static Talhao findTalhao(String nome) {
+        Talhao talhao = new Talhao();
+        ParseObject talhaoObject;
+
+        //Recupera o talhao do usuario logado com o nome fornecido
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
+        query.fromLocalDatastore();
+        query.whereEqualTo("nome", nome);
+
+        try {
+            talhaoObject = query.getFirst();
+            talhao = (Talhao)talhaoObject;
+        }
+        catch (ParseException e) {
+            Log.e("FindTalhao", e.toString());
+        }
+        return talhao;
+    }
 }

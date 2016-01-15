@@ -1,11 +1,14 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.EmbossMaskFilter;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,18 +34,9 @@ import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
 /**
  * Created by joaovq on 11/01/16.
  */
-public class AlambiqueAbaArea extends Fragment implements AdapterView.OnItemSelectedListener {
-    private static TextView areaReserva;
-    private static TextView areaTotalTalhoes;
-    private static TextView areaPorTalhao;
-    private static Spinner talhoes;
+public class AlambiqueAbaArea extends Fragment {
 
     private PieChart pie;
-
-    private Segment s1;
-    private Segment s2;
-    private Segment s3;
-    private Segment s4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +57,9 @@ public class AlambiqueAbaArea extends Fragment implements AdapterView.OnItemSele
                     if(segment != null) {
                         // handle the segment click...for now, just print
                         // the clicked segment's title to the console:
-                        System.out.println("Clicked Segment: " + segment.getTitle());
+                        Log.w("PieChart","Clicked Segment: " + segment.getTitle());
+                        Talhao talhao = AppQuery.findTalhao(segment.getTitle());
+                        createDetailsView(talhao);
                     }
                 }
                 return false;
@@ -99,50 +95,17 @@ public class AlambiqueAbaArea extends Fragment implements AdapterView.OnItemSele
         }
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        if(parent.getChildAt(0) != null) {
-            ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-            ((TextView) parent.getChildAt(0)).setTextSize(22);
-        }
+    private void createDetailsView(Talhao talhao){
+        String message = "TALHAO: " + talhao.getName() + "\nAREA : " + talhao.getArea() + " hectares";
+        AlertDialog.Builder userDetails = new AlertDialog.Builder(this.getActivity());
+        userDetails.setMessage(message);
+        userDetails.setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int arg1) {
+                dialog.cancel();
+            }
+        });
 
-        String talhao = (String)parent.getSelectedItem();
-        areaPorTalhao.setText(AppQuery.getAreaNoTalhao(talhao).toString());
-
+        AlertDialog alert = userDetails.create();
+        alert.show();
     }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
-        talhoes.setSelection(0);
-    }
-
-    public List<String> getTalhoes(List<Talhao> talhoes){
-        List<String> nomeTalhoes = new ArrayList<String>();
-        for(Talhao talhao : talhoes)
-            nomeTalhoes.add(talhao.getName());
-
-        return nomeTalhoes;
-    }
-
-    public void spinnerSetup(List<String> itens)
-    {
-        ArrayAdapter<String> talhaoAdapter;
-        talhaoAdapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_spinner_item, itens);
-
-        talhaoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        talhoes.setAdapter(talhaoAdapter);
-    }
-
-    public static void setTextView(){
-        String hectare = " hectare";
-        areaReserva.setText(AppQuery.getAreaReserva().toString() + hectare);
-        areaTotalTalhoes.setText(AppQuery.getAreaTotal().toString() + hectare);
-
-        String talhao = (String)talhoes.getSelectedItem();
-        areaPorTalhao.setText(AppQuery.getAreaNoTalhao(talhao).toString() + hectare);
-
-    }
-
 }

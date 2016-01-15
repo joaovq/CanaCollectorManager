@@ -25,8 +25,6 @@ public class AlambiqueAbaGeral extends Fragment{
     private TextView producaoDiaria;
     private TextView rendimentoIndustrialMedio;
 
-    private final Alambique alambique = AppQuery.getAlambique();
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +80,7 @@ public class AlambiqueAbaGeral extends Fragment{
                         pDialog = MyProgressDialog.getProgressDialog(AlambiqueAbaGeral.this.getActivity(), getString(R.string.refreshing_data));
                         pDialog.show();
                         setTextView();
-                        AlambiqueAbaArea.setTextView();
+                        //AlambiqueAbaArea.setTextView();
                         AlambiqueAbaEstoque.setTextView();
                         Log.w("Alembic General Tab", "Refresh button clicked");
                         AppUtils.recoverDataInBackgroung();
