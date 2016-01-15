@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
+import com.androidplot.xy.XYStepMode;
 import com.parse.ParseObject;
 
 import java.util.Arrays;
@@ -73,6 +73,8 @@ public class AlambiqueAbaProducao extends Fragment {
                 Arrays.asList(series2Numbers),
                 null);
 
+        grafico.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        grafico.setRangeStep(XYStepMode.INCREMENT_BY_VAL,250);
         grafico.getLegendWidget().setVisible(false);
         grafico.getGraphWidget().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
         grafico.getGraphWidget().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
@@ -114,6 +116,8 @@ public class AlambiqueAbaProducao extends Fragment {
                 "Moagem vs Tempo");
 
 
+        grafico.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        grafico.setRangeStep(XYStepMode.INCREMENT_BY_VAL,500);
         grafico.getLegendWidget().setVisible(false);
         grafico.getGraphWidget().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
         grafico.getGraphWidget().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
@@ -139,8 +143,6 @@ public class AlambiqueAbaProducao extends Fragment {
     private void gerarGraficoProducaoDiaria(XYPlot grafico){
         List<ParseObject> allCachaca = AppQuery.getAllCachaca();
 
-        Log.w("Produção", "" + allCachaca.size());
-
         Number[] series1Numbers = new Number[allCachaca.size()];
         for(int i = 0; i < allCachaca.size(); i++)
             series1Numbers[i] = i+1;
@@ -156,7 +158,8 @@ public class AlambiqueAbaProducao extends Fragment {
                 Arrays.asList(series2Numbers),
                 "Produção Diária vs Tempo");
 
-
+        grafico.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        grafico.setRangeStep(XYStepMode.INCREMENT_BY_VAL,10);
         grafico.getLegendWidget().setVisible(false);
         grafico.getGraphWidget().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
         grafico.getGraphWidget().getRangeGridLinePaint().setColor(Color.TRANSPARENT);

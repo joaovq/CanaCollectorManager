@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +47,7 @@ public class AlambiqueAbaEstoque extends Fragment implements AdapterView.OnItemS
         estoqueEmGarrafa    = (TextView) rootView.findViewById(R.id.estoqueEmGarrafaInput);
         estoqueNoTonel      = (TextView) rootView.findViewById(R.id.estoqueNoTonelXInput);
 
-        //setTextView();
+        setTextView();
 
         return rootView;
     }
@@ -105,7 +104,7 @@ public class AlambiqueAbaEstoque extends Fragment implements AdapterView.OnItemS
         estoqueEmToneis.setText(AppQuery.getEstoqueEmToneis().toString() + litros);
         estoqueEmGarrafa.setText(AppQuery.getEstoqueEmGarrafa().toString() + litros);
 
-        String tonel = (String) toneis.getSelectedItem();
-        estoqueNoTonel.setText(AppQuery.getEstoqueNoTonel(tonel).toString() + litros);
+//        String tonel = (String) toneis.getSelectedItem();
+//        estoqueNoTonel.setText(AppQuery.getEstoqueNoTonel(tonel).toString() + litros);
     }
 }

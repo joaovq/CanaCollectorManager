@@ -64,10 +64,10 @@ public class AlambiqueAbaGeral extends Fragment{
     }
 
     private void setTextView(){
-        areaTotal.setText(AppQuery.getAreaTotal().toString());
-        estoqueTotal.setText(AppQuery.getEstoqueTotal().toString());
-        producaoDiaria.setText(AppQuery.getProducaoMedia().toString());
-        rendimentoIndustrialMedio.setText(AppQuery.getRendimentoIndustrial().toString());
+        areaTotal.setText(String.format("%.2f", AppQuery.getAreaTotal()));
+        estoqueTotal.setText(String.format("%.2f", AppQuery.getEstoqueTotal()));
+        producaoDiaria.setText(String.format("%.2f", AppQuery.getProducaoMedia()));
+        rendimentoIndustrialMedio.setText(String.format("%.2f", AppQuery.getRendimentoIndustrial()));
     }
 
     private void setToolbar() {

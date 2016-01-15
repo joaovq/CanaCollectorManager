@@ -135,7 +135,7 @@ public class AppQuery {
             tonelResult = (Tonel) parseObject;
             total += tonelResult.getEstoque();
         }
-        return tonel.getEstoque();
+        return total;
     }
 
 //    //Consulta todas as anotacoes de producao de cachaca do server
