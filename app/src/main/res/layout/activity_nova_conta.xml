@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_new_account" />
+    <include layout="@layout/content_novo_conta" />
 
 </android.support.design.widget.CoordinatorLayout>

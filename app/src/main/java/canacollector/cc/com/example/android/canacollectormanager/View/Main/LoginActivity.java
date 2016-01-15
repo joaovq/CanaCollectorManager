@@ -24,7 +24,6 @@ import com.parse.ParseUser;
 
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
-import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 
 /**
@@ -46,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mEmailView.setText(USER);
 

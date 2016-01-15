@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorBackground"
+    android:background="@drawable/main_background"
     tools:context=".View.Main.LoginActivity">
 
     <!-- Login progress -->
@@ -54,7 +54,8 @@
         style="?android:textAppearanceSmall"
         android:text="@string/action_create_account"
         android:textStyle="bold"
-        android:textColor="@color/colorButtonText"
+        android:background="#d8a27640"
+        android:textColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -68,7 +69,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/action_sign_in"
-        android:textColor="@color/colorButtonText"
+        android:background="#d8a27640"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
@@ -104,7 +106,10 @@
         android:layout_above="@+id/password"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,10 +117,12 @@
         android:text="@string/app_name"
         android:textStyle="bold"
         android:layout_marginBottom="22dp"
-        android:textSize="25dp"
+        android:textSize="35dp"
         android:layout_above="@+id/email"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView"
         android:textColor="@color/colorLabel"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
         />
 </RelativeLayout>
