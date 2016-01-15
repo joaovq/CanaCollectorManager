@@ -185,7 +185,7 @@ public class AppQuery {
     }
 
     //RETORNA TODOS OS TALHOES DO ALAMBIQUE NO SERVER
-    public static void getAreaTotalFromServer() {
+    public static void getTalhaoFromServer() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
         query.whereEqualTo("alambique", getAlambique());
 
@@ -393,9 +393,8 @@ public class AppQuery {
         return talhao.getArea();
     }
 
-    public static List<Talhao> getTalhoes(){
-        Talhao talhao = new Talhao();
-        List<Talhao> talhoes = new ArrayList<Talhao>();
+    public static List<ParseObject> getAllTalhoes(){
+        List<Talhao> talhoes = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
         query.fromLocalDatastore();
 
@@ -403,16 +402,9 @@ public class AppQuery {
         try {
             talhaoList = query.find();
         } catch (ParseException e) {
-            Log.e("AppQuerie::getAreaTotal", e.toString());
+            Log.e("AppQuerie::getTalhoes", e.toString());
         }
-
-        Double areaNoTalhao = 0.0;
-        for (ParseObject parseObject : talhaoList ) {
-            talhao = (Talhao) parseObject;
-            talhoes.add(talhao);
-        }
-
-        return talhoes;
+        return talhaoList;
     }
 
     public static Double getEstoqueEmToneis(){
