@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //Recupera dados do servidor e salva em cache para futuras consultas
         AppUtils.recoverDataInBackgroung();
 

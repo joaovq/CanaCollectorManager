@@ -21,7 +21,7 @@ public class AlembiqueActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alembic);
+        setContentView(R.layout.activity_alembique);
 
         List<Fragment> fragments = getFragments();
 

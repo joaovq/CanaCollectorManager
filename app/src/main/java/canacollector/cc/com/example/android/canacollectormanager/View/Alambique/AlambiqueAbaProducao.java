@@ -1,19 +1,19 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.androidplot.xy.CatmullRomInterpolator;
 import com.androidplot.xy.LineAndPointFormatter;
-import com.androidplot.xy.PointLabelFormatter;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
+import com.androidplot.xy.XYStepMode;
 import com.parse.ParseObject;
 
 import java.util.Arrays;
@@ -58,8 +58,6 @@ public class AlambiqueAbaProducao extends Fragment {
     private void gerarGraficoMosto(XYPlot grafico){
         List<ParseObject> mostos = AppQuery.getAllMosto();
 
-        Log.w("Alambique Aba Geral", "" + mostos.size());
-
         Number[] series1Numbers = new Number[mostos.size()];
         for(int i = 0; i < mostos.size(); i++)
             series1Numbers[i] = i+1;
@@ -73,28 +71,27 @@ public class AlambiqueAbaProducao extends Fragment {
         XYSeries series = new SimpleXYSeries(
                 Arrays.asList(series1Numbers),
                 Arrays.asList(series2Numbers),
-                "Mosto vs Tempo");
+                null);
 
+        grafico.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        grafico.setRangeStep(XYStepMode.INCREMENT_BY_VAL,250);
+        grafico.getLegendWidget().setVisible(false);
+        grafico.getGraphWidget().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
+        grafico.getGraphWidget().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
+        grafico.getGraphWidget().getRangeOriginLinePaint().setColor(Color.WHITE);
 
-        LineAndPointFormatter series1Format = new LineAndPointFormatter();
-        series1Format.setPointLabelFormatter(new PointLabelFormatter());
-
-        LineAndPointFormatter series2Format = new LineAndPointFormatter();
-        series2Format.setPointLabelFormatter(new PointLabelFormatter());
-
-        // just for fun, add some smoothing to the lines:
-        // see: http://androidplot.com/smooth-curves-and-androidplot/
-        series1Format.setInterpolationParams(
+        LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
+        seriesFormat.setInterpolationParams(
                 new CatmullRomInterpolator.Params(10, CatmullRomInterpolator.Type.Centripetal));
-//        series1Format.configure(getActivity().getApplicationContext(),
-//                R.layout.line_point_formatter_with_labels);
-        
+        seriesFormat.getLinePaint().setColor(Color.WHITE);
+        seriesFormat.getFillPaint().setColor(Color.GRAY);
+        seriesFormat.getVertexPaint().setColor(Color.BLACK);
 
         // add a new series' to the xyplot:
-        grafico.addSeries(series, series1Format);
+        grafico.addSeries(series, seriesFormat);
 
         // reduce the number of range labels
-        grafico.setTicksPerRangeLabel(3);
+        grafico.setTicksPerRangeLabel(2);
 
         // rotate domain labels 45 degrees to make them more compact horizontally:
         grafico.getGraphWidget().setDomainLabelOrientation(-45);
@@ -119,25 +116,25 @@ public class AlambiqueAbaProducao extends Fragment {
                 "Moagem vs Tempo");
 
 
-        LineAndPointFormatter series1Format = new LineAndPointFormatter();
-        series1Format.setPointLabelFormatter(new PointLabelFormatter());
+        grafico.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        grafico.setRangeStep(XYStepMode.INCREMENT_BY_VAL,500);
+        grafico.getLegendWidget().setVisible(false);
+        grafico.getGraphWidget().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
+        grafico.getGraphWidget().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
+        grafico.getGraphWidget().getRangeOriginLinePaint().setColor(Color.WHITE);
 
-        LineAndPointFormatter series2Format = new LineAndPointFormatter();
-        series2Format.setPointLabelFormatter(new PointLabelFormatter());
-
-        // just for fun, add some smoothing to the lines:
-        // see: http://androidplot.com/smooth-curves-and-androidplot/
-        series1Format.setInterpolationParams(
+        LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
+        seriesFormat.setInterpolationParams(
                 new CatmullRomInterpolator.Params(10, CatmullRomInterpolator.Type.Centripetal));
-//        series1Format.configure(getActivity().getApplicationContext(),
-//                R.layout.line_point_formatter_with_labels);
-
+        seriesFormat.getLinePaint().setColor(Color.WHITE);
+        seriesFormat.getFillPaint().setColor(Color.GRAY);
+        seriesFormat.getVertexPaint().setColor(Color.BLACK);
 
         // add a new series' to the xyplot:
-        grafico.addSeries(series, series1Format);
+        grafico.addSeries(series, seriesFormat);
 
         // reduce the number of range labels
-        grafico.setTicksPerRangeLabel(3);
+        grafico.setTicksPerRangeLabel(2);
 
         // rotate domain labels 45 degrees to make them more compact horizontally:
         grafico.getGraphWidget().setDomainLabelOrientation(-45);
@@ -145,8 +142,6 @@ public class AlambiqueAbaProducao extends Fragment {
 
     private void gerarGraficoProducaoDiaria(XYPlot grafico){
         List<ParseObject> allCachaca = AppQuery.getAllCachaca();
-
-        Log.w("Produção", "" + allCachaca.size());
 
         Number[] series1Numbers = new Number[allCachaca.size()];
         for(int i = 0; i < allCachaca.size(); i++)
@@ -163,26 +158,25 @@ public class AlambiqueAbaProducao extends Fragment {
                 Arrays.asList(series2Numbers),
                 "Produção Diária vs Tempo");
 
+        grafico.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
+        grafico.setRangeStep(XYStepMode.INCREMENT_BY_VAL,10);
+        grafico.getLegendWidget().setVisible(false);
+        grafico.getGraphWidget().getDomainGridLinePaint().setColor(Color.TRANSPARENT);
+        grafico.getGraphWidget().getRangeGridLinePaint().setColor(Color.TRANSPARENT);
+        grafico.getGraphWidget().getRangeOriginLinePaint().setColor(Color.WHITE);
 
-        LineAndPointFormatter series1Format = new LineAndPointFormatter();
-        series1Format.setPointLabelFormatter(new PointLabelFormatter());
-
-        LineAndPointFormatter series2Format = new LineAndPointFormatter();
-        series2Format.setPointLabelFormatter(new PointLabelFormatter());
-
-        // just for fun, add some smoothing to the lines:
-        // see: http://androidplot.com/smooth-curves-and-androidplot/
-        series1Format.setInterpolationParams(
+        LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
+        seriesFormat.setInterpolationParams(
                 new CatmullRomInterpolator.Params(10, CatmullRomInterpolator.Type.Centripetal));
-//        series1Format.configure(getActivity().getApplicationContext(),
-//                R.layout.line_point_formatter_with_labels);
-
+        seriesFormat.getLinePaint().setColor(Color.WHITE);
+        seriesFormat.getFillPaint().setColor(Color.GRAY);
+        seriesFormat.getVertexPaint().setColor(Color.BLACK);
 
         // add a new series' to the xyplot:
-        grafico.addSeries(series, series1Format);
+        grafico.addSeries(series, seriesFormat);
 
         // reduce the number of range labels
-        grafico.setTicksPerRangeLabel(3);
+        grafico.setTicksPerRangeLabel(2);
 
         // rotate domain labels 45 degrees to make them more compact horizontally:
         grafico.getGraphWidget().setDomainLabelOrientation(-45);
