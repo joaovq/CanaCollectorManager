@@ -21,7 +21,7 @@ public class AppUtils {
         AppQuery.getEstoqueTotalFromServer();
         AppQuery.getProducaoTotalFromServer();
         AppQuery.getProducaoTotalFromServer();
-        AppQuery.getAreaTotalFromServer();
+        AppQuery.getTalhaoFromServer();
         AppQuery.getMostoTotalFromServer();
     }
 }
