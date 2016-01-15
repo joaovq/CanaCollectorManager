@@ -19,9 +19,9 @@ public class AppUtils {
 
     public static void recoverDataInBackgroung() {
         AppQuery.getEstoqueTotalFromServer();
-        AppQuery.getProducaoFromServer();
+        //AppQuery.getProducaoFromServer();
         AppQuery.getProducaoTotalFromServer();
-        AppQuery.getAreaTotalFromServer();
+        AppQuery.getTalhaoFromServer();
         AppQuery.getMostoTotalFromServer();
     }
 }
