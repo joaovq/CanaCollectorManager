@@ -18,11 +18,11 @@ public class AppUtils {
     }
 
     public static void recoverDataInBackgroung() {
-        AppQuery.getEstoqueTotalFromServer();
-        AppQuery.getProducaoTotalFromServer();
-        AppQuery.getProducaoTotalFromServer();
-        AppQuery.getTalhaoFromServer();
-        AppQuery.getMostoTotalFromServer();
+        AppQuery.getEstoqueTotalFromServerInBackground();
+        AppQuery.getProducaoTotalFromServerInBackground();
+        AppQuery.getProducaoTotalFromServerInBackground();
+        AppQuery.getTalhaoFromServerInBackground();
+        AppQuery.getMostoTotalFromServerInBackground();
     }
 }
 
