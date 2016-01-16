@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private ProgressDialog pDialog;
+//    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,21 +140,16 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            pDialog = MyProgressDialog.getProgressDialog(this,getString(R.string.message_atempting_login));
-            pDialog.show();
             ParseUser.logInInBackground(USER, PASSWORD, new LogInCallback() {
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {
-                        pDialog.dismiss();
                         //Recupera dados do estoque total
-                        AppQuery.getAlambiqueFromParse();
-
+                        new RunThread().execute();
                         loginSucessful();
                     } else {
                         // Signup failed. Look at the ParseException to see what happened.
                         System.out.println(TAG_ERROR);
                         Log.d("LOGIN:", e.toString());
-                        pDialog.dismiss();
                         Toast.makeText(LoginActivity.this, TAG_ERROR, Toast.LENGTH_LONG).show();
                     }
                 }
@@ -166,11 +162,31 @@ public class LoginActivity extends AppCompatActivity {
      * It drives the application to the main screen
      **/
     private void loginSucessful() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
-        Log.d("O ALAMBIUE EH", AppQuery.getAlambique().getName());
         //AppQuery.getEstoqueTotalFromServer();
         finish();
+    }
+
+    public class RunThread extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            pDialog = MyProgressDialog.getProgressDialog(LoginActivity.this, "Entrando! Aguarde...");
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            AppQuery.getAlambiqueFromParse();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            pDialog.dismiss();
+        }
     }
 }
 

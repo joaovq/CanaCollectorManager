@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -36,41 +35,56 @@ public class AppQuery {
         query.whereEqualTo("username", ParseUser.getCurrentUser().getUsername());
         query.include("alambique");
 
-        query.getFirstInBackground(new GetCallback<ParseUser>() {
-            @Override
-            public void done(final ParseUser object, ParseException e) {
-                if (e != null) {
-                    Log.d("AppUtils", "Nao foi possivel recuperar o alambique do usuario");
-                    return;
-                }
-                else {
-                    final String user_alambique = "alambique";
+        try {
+            ParseUser user = query.getFirst();
+            final String user_alambique = "alambique";
+            final List<ParseObject> alambiqueResult = new ArrayList<ParseObject>();
+            //object.getParseObject("alambique");
+            alambiqueResult.add(user);
+            final List<ParseObject> alambique = new ArrayList<>();
+            alambique.add(alambiqueResult.get(0));
 
-                    final List<ParseObject> alambiqueResult = new ArrayList<ParseObject>();
-                    //object.getParseObject("alambique");
-                    alambiqueResult.add(object.getParseObject("alambique"));
-                    final List<ParseObject> alambique = new ArrayList<>();
-                    alambique.add(alambiqueResult.get(0));
+        ParseUser.unpinAll();
+        ParseUser.pinAll(user_alambique,alambique);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
 
-
-
-                    // Release any objects previously pinned for this query.
-                    ParseUser.unpinAllInBackground(user_alambique, alambiqueResult, new DeleteCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e != null) {
-                                // There was some error.
-                                return;
-                            }
-                            Log.w("App Utils", "Ta aqui");
-                            // Add the latest results for this query to the cache.
-                            ParseObject.pinAllInBackground(user_alambique,alambique );
-                        }
-                    });
-
-                }
-            }
-        });
+//        query.getFirstInBackground(new GetCallback<ParseUser>() {
+//            @Override
+//            public void done(final ParseUser object, ParseException e) {
+//                if (e != null) {
+//                    Log.d("AppUtils", "Nao foi possivel recuperar o alambique do usuario");
+//                    return;
+//                }
+//                else {
+//                    final String user_alambique = "alambique";
+//
+//                    final List<ParseObject> alambiqueResult = new ArrayList<ParseObject>();
+//                    //object.getParseObject("alambique");
+//                    alambiqueResult.add(object.getParseObject("alambique"));
+//                    final List<ParseObject> alambique = new ArrayList<>();
+//                    alambique.add(alambiqueResult.get(0));
+//
+//
+//
+//                    // Release any objects previously pinned for this query.
+//                    ParseUser.unpinAllInBackground(user_alambique, alambiqueResult, new DeleteCallback() {
+//                        @Override
+//                        public void done(ParseException e) {
+//                            if (e != null) {
+//                                // There was some error.
+//                                return;
+//                            }
+//                            Log.w("App Utils", "Ta aqui");
+//                            // Add the latest results for this query to the cache.
+//                            ParseObject.pinAllInBackground(user_alambique,alambique );
+//                        }
+//                    });
+//
+//                }
+//            }
+//        });
     }
 
     //Consulta local sobre o alambique
@@ -89,7 +103,25 @@ public class AppQuery {
     }
 
     //Consulta o estoque total do alambique
-    public static void getEstoqueTotalFromServer() {
+    public static boolean getEstoqueTotalFromServer() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
+        query.whereEqualTo("alambique", getAlambique());
+        query.whereGreaterThan("estoque", 0.0);
+        List<ParseObject> objectList = new ArrayList<>();
+        try {
+            objectList  = query.find();
+            ParseObject.unpinAll();
+            ParseObject.pinAll(ESTOQUE_TOTAL, objectList);
+            Log.w("ThreadQuery", objectList.size() + "");
+        } catch (ParseException e) {
+            Log.e("ThreadQuery","Erro no get estoque from server");
+        }
+        return true;
+
+    }
+
+    //Consulta o estoque total do alambique
+    public static void getEstoqueTotalFromServerInBackground() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tonel");
         query.whereEqualTo("alambique", getAlambique());
         query.whereGreaterThan("estoque", 0.0);
@@ -185,10 +217,25 @@ public class AppQuery {
     }
 
     //RETORNA TODOS OS TALHOES DO ALAMBIQUE NO SERVER
-    public static void getTalhaoFromServer() {
+    public static boolean getTalhaoFromServer() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
         query.whereEqualTo("alambique", getAlambique());
+        List<ParseObject> objectList = new ArrayList<>();
+        try {
+            objectList  =query.find();
+            ParseObject.unpinAll();
+            ParseObject.pinAll(AREA_TOTAL, objectList);
+        } catch (ParseException e) {
 
+        }
+        return true;
+
+    }
+
+    //RETORNA TODOS OS TALHOES DO ALAMBIQUE NO SERVER
+    public static void getTalhaoFromServerInBackground() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talhao");
+        query.whereEqualTo("alambique", getAlambique());
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(final List<ParseObject> talhaoList, ParseException e) {
                 if (e != null) {
@@ -213,10 +260,25 @@ public class AppQuery {
     }
 
     //RETORNA TODOS OS DADOS REFERENTES A MOAGEM/MOSTO NO SERVER
-    public static void getMostoTotalFromServer() {
+    public static boolean getMostoTotalFromServer() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
         query.whereEqualTo("alambique", getAlambique());
+        List<ParseObject> objectList = new ArrayList<>();
+        try {
+            objectList  =query.find();
+            ParseObject.unpinAll();
+            ParseObject.pinAll(MOSTO_TOTAL, objectList);
+        } catch (ParseException e) {
 
+        }
+        return true;
+
+    }
+
+    //RETORNA TODOS OS DADOS REFERENTES A MOAGEM/MOSTO NO SERVER
+    public static void getMostoTotalFromServerInBackground() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Mosto");
+        query.whereEqualTo("alambique", getAlambique());
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(final List<ParseObject> mostoList, ParseException e) {
                 if (e != null) {
@@ -255,7 +317,23 @@ public class AppQuery {
     }
 
     //RETORNA TODOS OS DADOS REFERENTES A PRODUCAO DE CACHACA NO SERVER
-    public static void getProducaoTotalFromServer() {
+    public static boolean getProducaoTotalFromServer() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
+        query.whereEqualTo("alambique", getAlambique());
+        List<ParseObject> objectList = new ArrayList<>();
+        try {
+            objectList  = query.find();
+            ParseObject.unpinAll();
+            ParseObject.pinAll(PRODUCAO_TOTAL, objectList);
+            Log.w("ThreadQueryproduction", objectList.size() + "");
+        } catch (ParseException e) {
+
+        }
+        return true;
+    }
+
+    //RETORNA TODOS OS DADOS REFERENTES A PRODUCAO DE CACHACA NO SERVER
+    public static void getProducaoTotalFromServerInBackground() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Cachaca");
         query.whereEqualTo("alambique", getAlambique());
 
@@ -440,5 +518,22 @@ public class AppQuery {
             Log.e("AppQuerie::EstoqueTonel", e.toString());
         }
         return toneisList;
+    }
+
+    public static Talhao findTalhao(String nome){
+        Talhao talhao = new Talhao();
+        ParseObject talhaObject;
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Talhao");
+        query.fromLocalDatastore();
+        query.whereEqualTo("nome",nome);
+        try{
+            talhaObject = query.getFirst();
+            talhao = (Talhao) talhaObject;
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+        return talhao;
     }
 }

@@ -1,7 +1,6 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Gestao;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -109,8 +108,6 @@ public class UsuariosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == R.id.button_new_user){
-            Intent intent = new Intent(this,NovoUsuarioActivity.class);
-            startActivity(intent);
             return true;
         }
 

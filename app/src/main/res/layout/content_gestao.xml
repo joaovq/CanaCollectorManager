@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/main_background"
+    android:background="@drawable/main_background4"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".View.Gestao.GestaoActivity"
     tools:showIn="@layout/activity_gestao">
@@ -19,7 +19,7 @@
         android:text="Funcionários"
         android:id="@+id/usersButton"
         android:textColor="#ffffffff"
-        android:background="#d8a27640"
+        android:background="@color/buttonBackground"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

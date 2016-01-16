@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        androidPlot.title="Area dos talhoes"
-        androidPlot.titleWidget.labelPaint.textSize="15dp"
+        androidPlot.title="Area dos talhões"
+        androidPlot.titleWidget.labelPaint.textSize="25dp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

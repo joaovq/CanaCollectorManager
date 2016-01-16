@@ -1,10 +1,10 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
 import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +14,6 @@ import android.widget.TextView;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Alambique;
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
-import canacollector.cc.com.example.android.canacollectormanager.Utils.AppUtils;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 
 public class AlambiqueAbaGeral extends Fragment{
@@ -79,18 +78,39 @@ public class AlambiqueAbaGeral extends Fragment{
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.button_refresh:
-                        pDialog = MyProgressDialog.getProgressDialog(AlambiqueAbaGeral.this.getActivity(), getString(R.string.refreshing_data));
-                        pDialog.show();
-                        setTextView();
-                        AlambiqueAbaArea.setTextView();
-                        AlambiqueAbaEstoque.setTextView();
-                        Log.w("Alembic General Tab", "Refresh button clicked");
-                        AppUtils.recoverDataInBackgroung();
-                        pDialog.dismiss();
+                        new RunThread().execute();
                         return true;
                 }
                 return false;
             }
         });
+    }
+
+    public class RunThread extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            pDialog = MyProgressDialog.getProgressDialog(AlambiqueAbaGeral.this.getActivity(), "Atualizando! Aguarde");
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            AppQuery.getEstoqueTotalFromServer();
+            AppQuery.getProducaoTotalFromServer();
+            AppQuery.getProducaoTotalFromServer();
+            AppQuery.getTalhaoFromServer();
+            AppQuery.getMostoTotalFromServer();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            pDialog.dismiss();
+            setTextView();
+        }
     }
 }

@@ -1,10 +1,13 @@
 package canacollector.cc.com.example.android.canacollectormanager.View.Alambique;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,21 +26,25 @@ import canacollector.cc.com.example.android.canacollectormanager.Model.Cachaca;
 import canacollector.cc.com.example.android.canacollectormanager.Model.Mosto;
 import canacollector.cc.com.example.android.canacollectormanager.R;
 import canacollector.cc.com.example.android.canacollectormanager.Utils.AppQuery;
+import canacollector.cc.com.example.android.canacollectormanager.Utils.MyProgressDialog;
 
 /**
  * Created by joaovq on 11/01/16.
  */
 public class AlambiqueAbaProducao extends Fragment {
+    private XYPlot grafico1;
+    private XYPlot grafico2;
+    private XYPlot grafico3;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.content_alambique_aba_producao, container, false);
 
-        XYPlot grafico1 = (XYPlot) rootView.findViewById(R.id.graficoQtdMostoPorTempo);
-        XYPlot grafico2 = (XYPlot) rootView.findViewById(R.id.graficoMoagemPorTempo);
-        XYPlot grafico3 = (XYPlot) rootView.findViewById(R.id.graficoProducaoDiariaPorTempo);
-
+        grafico1 = (XYPlot) rootView.findViewById(R.id.graficoQtdMostoPorTempo);
+        grafico2 = (XYPlot) rootView.findViewById(R.id.graficoMoagemPorTempo);
+        grafico3 = (XYPlot) rootView.findViewById(R.id.graficoProducaoDiariaPorTempo);
         gerarGraficoMosto(grafico1);
         gerarGraficoMoagem(grafico2);
         gerarGraficoProducaoDiaria(grafico3);
@@ -52,6 +59,17 @@ public class AlambiqueAbaProducao extends Fragment {
         if (this.isVisible()) {
             Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
             toolbar.setTitle("Produção");
+            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem menuItem) {
+                    switch (menuItem.getItemId()) {
+                        case R.id.button_refresh:
+                           new RunThread().execute();
+                            return true;
+                    }
+                    return false;
+                }
+            });
         }
     }
 
@@ -84,7 +102,7 @@ public class AlambiqueAbaProducao extends Fragment {
         seriesFormat.setInterpolationParams(
                 new CatmullRomInterpolator.Params(10, CatmullRomInterpolator.Type.Centripetal));
         seriesFormat.getLinePaint().setColor(Color.WHITE);
-        seriesFormat.getFillPaint().setColor(Color.GRAY);
+        seriesFormat.getFillPaint().setColor(Color.rgb(0,132,132));
         seriesFormat.getVertexPaint().setColor(Color.BLACK);
 
         // add a new series' to the xyplot:
@@ -127,7 +145,7 @@ public class AlambiqueAbaProducao extends Fragment {
         seriesFormat.setInterpolationParams(
                 new CatmullRomInterpolator.Params(10, CatmullRomInterpolator.Type.Centripetal));
         seriesFormat.getLinePaint().setColor(Color.WHITE);
-        seriesFormat.getFillPaint().setColor(Color.GRAY);
+        seriesFormat.getFillPaint().setColor(Color.rgb(255,127,120));
         seriesFormat.getVertexPaint().setColor(Color.BLACK);
 
         // add a new series' to the xyplot:
@@ -142,6 +160,9 @@ public class AlambiqueAbaProducao extends Fragment {
 
     private void gerarGraficoProducaoDiaria(XYPlot grafico){
         List<ParseObject> allCachaca = AppQuery.getAllCachaca();
+
+
+
 
         Number[] series1Numbers = new Number[allCachaca.size()];
         for(int i = 0; i < allCachaca.size(); i++)
@@ -180,5 +201,35 @@ public class AlambiqueAbaProducao extends Fragment {
 
         // rotate domain labels 45 degrees to make them more compact horizontally:
         grafico.getGraphWidget().setDomainLabelOrientation(-45);
+    }
+
+    public class RunThread extends AsyncTask<Void, Void, Void> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            pDialog = MyProgressDialog.getProgressDialog(AlambiqueAbaProducao.this.getActivity(), "Atualizando! Aguarde");
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            AppQuery.getEstoqueTotalFromServer();
+            AppQuery.getProducaoTotalFromServer();
+            AppQuery.getProducaoTotalFromServer();
+            AppQuery.getTalhaoFromServer();
+            AppQuery.getMostoTotalFromServer();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            pDialog.dismiss();
+            gerarGraficoMosto(grafico1);
+            gerarGraficoMoagem(grafico2);
+            gerarGraficoProducaoDiaria(grafico3);
+        }
     }
 }
